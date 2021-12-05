@@ -1,0 +1,18 @@
+:root {
+  --main-color: #00a896;
+  --main-alt-color: #272635;
+  --action-color: #f18f01;
+  --secondary-color: #e8e9f3;
+}
+.bg-main {
+  background-color: var(--main-color);
+}
+.bg-action {
+  background-color: var(--action-color);
+}
+.text-action {
+  color: var(--action-color);
+}
+.text-secondary {
+  color: var(--secondary-color);
+}
