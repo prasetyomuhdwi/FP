@@ -10,7 +10,10 @@ switch ($request) {
         require __DIR__ . '/views/about.php';
         break;
     case '/login':
-        require __DIR__ . '/views/login.php';
+        require __DIR__ . '/views/signUpIn.php';
+        break;
+    case '/register':
+        require __DIR__ . '/views/signUpIn.php';
         break;
     default:
         http_response_code(404);
