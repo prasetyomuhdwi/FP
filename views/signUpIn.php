@@ -40,7 +40,7 @@ switch ($request) {
                     <img src="./assets/image/logo-alt.png" class="w-64" alt="logo">
                 </a>
             </div>
-            <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+            <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200 dark:bg-gray-800">
                 <?php echo $signUpIn->component($request); ?>
             </div>
             <div class='py-5'>
@@ -48,7 +48,7 @@ switch ($request) {
                     <div class='w-full text-center sm:text-left whitespace-nowrap'>
                         <div class='w-full flex justify-center items-center px-5 py-4 font-normal text-sm rounded-lg text-blue-50'>
                             <span><?php echo $tmp1; ?> punya akun?</span>
-                            <a href='/<?php echo $link; ?>' class='ml-2 flex hover:text-blue-800 focus:text-blue-600 cursor-pointer  transition duration-200'>
+                            <a href='/<?php echo $link; ?>' class='ml-2 flex hover:text-blue-800 focus:text-blue-600 cursor-pointer transition duration-200'>
                                 <b class='font-extrabold'> <?php echo $tmp2; ?></b>
                                 <svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
                                     <path fill-rule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clip-rule='evenodd' />

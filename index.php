@@ -15,8 +15,16 @@ switch ($request) {
     case '/register':
         require __DIR__ . '/views/signUpIn.php';
         break;
+    case '/403':
+        http_response_code(403);
+        require __DIR__ . '/views/errorPage.php';
+        break;
+    case '/500':
+        http_response_code(500);
+        require __DIR__ . '/views/errorPage.php';
+        break;
     default:
         http_response_code(404);
-        require __DIR__ . '/views/404.php';
+        require __DIR__ . '/views/errorPage.php';
         break;
 }
