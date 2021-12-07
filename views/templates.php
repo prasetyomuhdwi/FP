@@ -1,23 +1,10 @@
 <?php
-require_once("./views/component/signUpIn.php");
+require_once("./views/component/SignUpIn.php");
 
 $signUpIn = new SignUpIn();
 $request = $_SERVER['REQUEST_URI'];
-$request = trim($request, "/FP");
-
-switch ($request) {
-    case 'login':
-        $tmp1 = "Belum";
-        $tmp2 = " Registrasi Sekarang";
-        $link = "register";
-        break;
-
-    default:
-        $tmp1 = "Sudah";
-        $tmp2 = " Login Disini";
-        $link = "login";
-        break;
-}
+$request = trim($request, $config["app_root"]);
+$content = $signUpIn->content($request);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +14,7 @@ switch ($request) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php echo $content["title"] ?></title>
     <link rel="stylesheet" href="./assets/css/tailwindcss.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -47,9 +34,9 @@ switch ($request) {
                 <div class='grid gap-1'>
                     <div class='w-full text-center sm:text-left whitespace-nowrap'>
                         <div class='w-full flex justify-center items-center px-5 py-4 font-normal text-sm rounded-lg text-blue-50'>
-                            <span><?php echo $tmp1; ?> punya akun?</span>
-                            <a href='/<?php echo $link; ?>' class='ml-2 flex hover:text-blue-800 focus:text-blue-600 cursor-pointer transition duration-200'>
-                                <b class='font-extrabold'> <?php echo $tmp2; ?></b>
+                            <span><?php echo $content["msg1"]; ?> punya akun?</span>
+                            <a href='./<?php echo $content["link"]; ?>' class='ml-2 flex hover:text-blue-800 focus:text-blue-600 cursor-pointer transition duration-200'>
+                                <b class='font-extrabold'> <?php echo $content["msg2"]; ?></b>
                                 <svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
                                     <path fill-rule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clip-rule='evenodd' />
                                 </svg>
@@ -58,7 +45,6 @@ switch ($request) {
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

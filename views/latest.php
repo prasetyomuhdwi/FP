@@ -1,3 +1,11 @@
+<?php
+require_once("./views/component/Breadcrumbs.php");
+
+$currentUrl = trim($request, "/");
+$currentUrl = explode("/", $currentUrl);
+$breadcrumbs = new Breadcrumbs($currentUrl);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title><?php echo ucfirst($currentUrl[0]); ?></title>
     <link rel="stylesheet" href="./assets/css/tailwindcss.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -26,8 +34,8 @@
                         </div>
                         <!-- Primary Navbar items -->
                         <div class="hidden md:flex items-center space-x-1">
-                            <a href="./" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</a>
-                            <a href="./latest" class="py-4 px-2 text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300">Latest</a>
+                            <a href="./" class="py-4 px-2 text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300">Home</a>
+                            <a href="./latest" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold">Latest</a>
                             <a href="./about" class="py-4 px-2 text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300">About Us</a>
                         </div>
                     </div>
@@ -83,7 +91,9 @@
             <div class="max-w-6xl mx-auto px-4 pt-4 lg:pt-6">
                 <div class="flex justify-between dark:text-white">
 
-                    as
+                    <!-- Breadcrumbs -->
+                    <?php $breadcrumbs->breadcrumb() ?>
+
                 </div>
             </div>
         </main>

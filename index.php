@@ -1,6 +1,7 @@
 <?php
 $request = $_SERVER['REQUEST_URI'];
-$request = "/" . trim($request, "/FP");
+$config = parse_ini_file(__DIR__ . '/app/app.ini');
+$request = "/" . trim($request, $config['app_root']);
 
 switch ($request) {
     case '/':
@@ -10,10 +11,13 @@ switch ($request) {
         require __DIR__ . '/views/about.php';
         break;
     case '/login':
-        require __DIR__ . '/views/signUpIn.php';
+        require __DIR__ . '/views/templates.php';
         break;
     case '/register':
-        require __DIR__ . '/views/signUpIn.php';
+        require __DIR__ . '/views/templates.php';
+        break;
+    case '/latest':
+        require __DIR__ . '/views/latest.php';
         break;
     case '/403':
         http_response_code(403);

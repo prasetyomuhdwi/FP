@@ -51,8 +51,11 @@ class SignUpIn
             </svg>
         </button>
     </div>";
+    private $forgetPass = "
+        
+    ";
 
-    function component($componentName)
+    public function component($componentName)
     {
         switch ($componentName) {
             case 'login':
@@ -63,5 +66,26 @@ class SignUpIn
                 return $this->register;
                 break;
         }
+    }
+
+    public function content($urlString)
+    {
+        switch ($urlString) {
+            case 'login':
+                $title = "Login";
+                $tmp1 = "Belum";
+                $tmp2 = " Registrasi Sekarang";
+                $link = "register";
+                break;
+
+            default:
+                $title = "Register";
+                $tmp1 = "Sudah";
+                $tmp2 = " Login Disini";
+                $link = "login";
+                break;
+        }
+
+        return ["title" => $title, "msg1" => $tmp1, "msg2" => $tmp2, "link" => $link];
     }
 }
