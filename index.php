@@ -1,4 +1,8 @@
 <?php
+require_once(__DIR__ . '/app/controllers/Login.php');
+$loginClass = new Login();
+$islogin = $loginClass->isLogin();
+
 $request = $_SERVER['REQUEST_URI'];
 $config = parse_ini_file(__DIR__ . '/app/app.ini');
 $request = "/" . trim($request, $config['app_root']);
