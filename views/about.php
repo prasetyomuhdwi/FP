@@ -14,6 +14,7 @@ $breadcrumbs = new Breadcrumbs($currentUrl);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="icon" href="./assets/image/logo.svg">
     <link rel="stylesheet" href="./assets/css/tailwindcss.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -28,7 +29,7 @@ $breadcrumbs = new Breadcrumbs($currentUrl);
                         <div>
                             <!-- Website Logo -->
                             <a href="./" class="flex items-end py-4 px-2">
-                                <img src="./assets/image/logo.svg" alt="Logo" class="h-8 w-8 mr-2">
+                                <img src="./assets/image/logo.svg" alt="Logo" class="h-8 w-8 mr-2 transition duration-300">
                                 <span class="font-semibold text-gray-500 dark:text-gray-50 text-lg">ToPlanter</span>
                             </a>
                         </div>

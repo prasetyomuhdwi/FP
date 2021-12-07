@@ -14,6 +14,7 @@ $errArray = $errClass->errorMsg()
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $errArray["title"]; ?></title>
+    <link rel="icon" href="./assets/image/logo.svg">
     <link rel="stylesheet" href="<?php echo $root; ?>/assets/css/tailwindcss.css">
 </head>
 
