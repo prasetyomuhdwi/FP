@@ -26,3 +26,15 @@ function darkmode(element) {
     toggle = 0;
   }
 }
+
+// Account modal
+const btn_account = document.querySelector("#btn_account");
+const account_modal = document.querySelector("#account_modal");
+
+btn_account.addEventListener("click", () => {
+  account_modal.classList.remove("hidden");
+  setTimeout(() => {
+    account_modal.classList.add("hidden");
+    btn_account.blur();
+  }, 3000);
+});
