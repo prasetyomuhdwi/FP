@@ -10,29 +10,30 @@ btn.addEventListener("click", () => {
 const body = document.querySelector("body");
 const btn_darkmode = document.querySelector("#btn_darkmode");
 const item_darkmode = document.querySelector("#item_darkmode");
+let toggleDarkmode = document.cookie ? getCookies("viewmode") : "light";
 
-let toggle = document.cookie ? getCookies("darkmode") : false;
-
-if (toggle) {
-  btn_darkmode.classList.add("bg-green-700");
-  item_darkmode.classList.add("translate-x-7");
-  darkmode(body);
-}
+darkmode();
 
 btn_darkmode.addEventListener("click", () => {
-  btn_darkmode.classList.toggle("bg-green-700");
-  item_darkmode.classList.toggle("translate-x-7");
-  darkmode(body);
-});
-function darkmode(element) {
-  if (toggle == false) {
-    element.classList.remove("dark");
-    toggle = true;
-    document.cookie = "darkmode=false";
+  darkmode();
+  if (toggleDarkmode === "light") {
+    document.cookie = "viewmode=dark";
   } else {
-    element.classList.add("dark");
-    toggle = false;
-    document.cookie = "darkmode=true";
+    document.cookie = "viewmode=light";
+  }
+});
+
+function darkmode() {
+  if (toggleDarkmode === "light") {
+    btn_darkmode.classList.remove("bg-green-700");
+    item_darkmode.classList.remove("translate-x-7");
+    body.classList.remove("dark");
+    toggleDarkmode = "dark";
+  } else {
+    btn_darkmode.classList.add("bg-green-700");
+    item_darkmode.classList.add("translate-x-7");
+    body.classList.add("dark");
+    toggleDarkmode = "light";
   }
 }
 

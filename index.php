@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/app/controllers/Login.php');
 $loginClass = new Login();
 $islogin = $loginClass->isLogin();
+$accountComp = $loginClass->getComponent();
 
 $request = $_SERVER['REQUEST_URI'];
 $config = parse_ini_file(__DIR__ . '/app/app.ini');
@@ -22,6 +23,9 @@ switch ($request) {
         break;
     case '/latest':
         require __DIR__ . '/views/latest.php';
+        break;
+    case '/blog':
+        require __DIR__ . '/views/blog.php';
         break;
     case '/403':
         http_response_code(403);
