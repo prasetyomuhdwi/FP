@@ -24,7 +24,7 @@ switch ($request) {
     case '/latest':
         require __DIR__ . '/views/latest.php';
         break;
-    case '/blog':
+    case (preg_match('/blog/i', $request) ? true : false):
         require __DIR__ . '/views/blog.php';
         break;
     case '/403':
