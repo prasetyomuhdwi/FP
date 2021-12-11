@@ -20,73 +20,9 @@ $page = new Page($currentUrl);
 
 <body class="">
     <section class="h-screen">
-        <!-- Navbar goes here -->
-        <nav class="bg-white dark:bg-gray-800 shadow-lg transition duration-300">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="flex justify-between">
-                    <div class="flex space-x-7">
-                        <div>
-                            <!-- Website Logo -->
-                            <a href="./" class="flex items-end py-4 px-2">
-                                <img src="./assets/image/logo.svg" alt="Logo" class="h-8 w-8 mr-2 transition duration-300">
-                                <span class="font-semibold text-gray-500 dark:text-gray-50 text-lg">ToPlanter</span>
-                            </a>
-                        </div>
-                        <!-- Primary Navbar items -->
-                        <div class="hidden md:flex items-center space-x-1">
-                            <a href="./" class="py-4 px-2 text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300">Home</a>
-                            <a href="./latest" class="py-4 px-2 text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300">Latest</a>
-                            <a href="./about" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">About Us</a>
-                        </div>
-                    </div>
-                    <!-- Secondary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-3 ">
+        <!-- Header -->
+        <?php $page->header("about") ?>
 
-                        <?php echo $accountComp; ?>
-
-                        <!-- Not toggled switch -->
-                        <div class="w-full h-full flex flex-col justify-center items-center">
-                            <div class="flex justify-center items-center">
-                                <span class="">
-                                    <svg class="h-6 w-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                </span>
-
-                                <!-- Switch Container -->
-                                <button id="btn_darkmode" class="w-14 h-7 flex items-center bg-gray-300 rounded-full mx-3 px-1 transition duration-300">
-                                    <!-- Switch -->
-                                    <div id="item_darkmode" class="bg-white w-5 h-5 rounded-full shadow-md transform transition duration-300"></div>
-                                </button>
-
-                                <span class="">
-                                    <svg class="h-6 w-6 text-gray-400 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Mobile menu button -->
-                    <div class="md:hidden flex items-center">
-                        <button class="outline-none mobile-menu-button">
-                            <svg class=" w-6 h-6 text-gray-500 dark:text-gray-50 hover:text-green-500 " x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- mobile menu -->
-            <div class="hidden mobile-menu">
-                <ul class="dark:bg-gray-600">
-                    <li class="active"><a href="./" class="block text-sm px-2 py-4 dark:text-white hover:bg-green-500">Home</a></li>
-                    <li><a href="./latest" class="block text-sm px-2 py-4 dark:text-white hover:bg-green-500 transition duration-300">Latest</a></li>
-                    <li><a href="./about" class="block text-sm px-2 py-4 dark:text-white bg-green-500 font-semibold transition duration-300">About Us</a></li>
-                </ul>
-            </div>
-        </nav>
         <main class="bg-gray-200 dark:bg-gray-700 h-full">
             <div class="max-w-6xl mx-auto px-4 pt-4 lg:pt-6">
                 <div class="flex justify-between dark:text-white">
@@ -94,6 +30,60 @@ $page = new Page($currentUrl);
                     <!-- Breadcrumbs -->
                     <?php $page->breadcrumb() ?>
 
+                </div>
+                <div class="w-2/6 bg-white rounded-lg shadow-sm p-8">
+                    <div class="flex flex-col mt-5 gap-7 text-sm">
+                        <div class="bg-yellow-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
+                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2375 (Ketua)</p>
+                                    <p class="text-gray-400 text-xs">YUDHA PRATAMA PUTRA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
+                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2365</p>
+                                    <p class="text-gray-400 text-xs">MUHAMMAD DWI PRASETYO</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-pink-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
+                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2354</p>
+                                    <p class="text-gray-400 text-xs">CHANDRA AGUNG RIZKY</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-indigo-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
+                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2558</p>
+                                    <p class="text-gray-400 text-xs">ANDRE ADI ANUWAR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-red-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
+                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-700 font-bold tracking-wider">18.11.1944</p>
+                                    <p class="text-gray-400 text-xs">MUH. ASADULLOH AL MUBAROK</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
