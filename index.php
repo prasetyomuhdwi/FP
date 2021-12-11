@@ -30,7 +30,7 @@ switch ($request) {
         require __DIR__ . '/views/blog.php';
         break;
     case (preg_match('/profile/i', $request) ? true : false):
-        require __DIR__ . '/views/profile_baru.php';
+        require __DIR__ . '/views/profile.php';
         break;
     case (preg_match('/bookmarks/i', $request) ? true : false):
         require __DIR__ . '/views/bookmarks.php';
