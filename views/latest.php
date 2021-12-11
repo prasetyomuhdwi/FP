@@ -1,9 +1,9 @@
 <?php
-require_once("./views/component/Breadcrumbs.php");
+require_once("./views/component/Page.php");
 
 $currentUrl = trim($request, "/");
 $currentUrl = explode("/", $currentUrl);
-$breadcrumbs = new Breadcrumbs($currentUrl);
+$page = new Page($currentUrl);
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +93,7 @@ $breadcrumbs = new Breadcrumbs($currentUrl);
                 <div class="flex justify-between dark:text-white">
 
                     <!-- Breadcrumbs -->
-                    <?php $breadcrumbs->breadcrumb() ?>
+                    <?php $page->breadcrumb() ?>
 
                 </div>
             </div>

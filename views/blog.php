@@ -1,3 +1,6 @@
+<?php
+$page = new Page($currentUrl);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +19,7 @@
 </head>
 
 
-<body class="bg-gray-200 font-sans leading-normal tracking-normal">
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
 	<nav id="header" class="fixed w-full z-10 top-0 bg-white dark:bg-gray-800 shadow-lg transition duration-300">
 
@@ -190,39 +193,8 @@
 	</div>
 	<!--/container-->
 
-	<footer class="bg-white dark:bg-gray-800 border-t border-gray-400 shadow">
-		<div class="container max-w-4xl mx-auto flex py-8">
-
-			<div class="w-full mx-auto flex flex-wrap">
-				<div class="flex w-full md:w-1/2 ">
-					<div class="px-8">
-						<h3 class="font-bold text-gray-900 dark:text-white">About</h3>
-						<p class="py-4 text-gray-600 dark:text-gray-400 text-sm">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
-						</p>
-					</div>
-				</div>
-
-				<div class="flex w-full md:w-1/2">
-					<div class="px-8">
-						<h3 class="font-bold text-gray-900 dark:text-white">Social</h3>
-						<ul class="list-reset items-center text-sm pt-3">
-							<li>
-								<a class="inline-block text-gray-600 dark:text-gray-400 no-underline hover:text-gray-900  dark:hover:text-white hover:text-underline py-1" href="#">Add social link</a>
-							</li>
-							<li>
-								<a class="inline-block text-gray-600 dark:text-gray-400 no-underline hover:text-gray-900  dark:hover:text-white hover:text-underline py-1" href="#">Add social link</a>
-							</li>
-							<li>
-								<a class="inline-block text-gray-600 dark:text-gray-400 no-underline hover:text-gray-900  dark:hover:text-white hover:text-underline py-1" href="#">Add social link</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</footer>
+	<!-- Footer -->
+	<?php $page->footer() ?>
 
 	<script src="./assets/js/jquery-3.4.1.min.js"></script>
 	<script src="./assets/js/main.js"></script>

@@ -1,5 +1,4 @@
 <?php
-
 $currentUrl = trim($request, "/");
 $currentUrl = explode("/", $currentUrl);
 $page = new Page($currentUrl);
@@ -12,7 +11,7 @@ $page = new Page($currentUrl);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Profile</title>
     <link rel="icon" href="./assets/image/logo.svg">
     <link rel="stylesheet" href="./assets/css/tailwindcss.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -98,7 +97,6 @@ $page = new Page($currentUrl);
             </div>
         </main>
     </section>
-
     <!-- Footer -->
     <?php $page->footer() ?>
 

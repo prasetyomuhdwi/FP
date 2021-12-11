@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__ . '/app/controllers/Login.php');
+require_once("./views/component/Page.php");
+
 $loginClass = new Login();
 $islogin = $loginClass->isLogin();
 $accountComp = $loginClass->getComponent();
@@ -26,6 +28,15 @@ switch ($request) {
         break;
     case (preg_match('/blog/i', $request) ? true : false):
         require __DIR__ . '/views/blog.php';
+        break;
+    case (preg_match('/profile/i', $request) ? true : false):
+        require __DIR__ . '/views/profile.php';
+        break;
+    case (preg_match('/bookmarks/i', $request) ? true : false):
+        require __DIR__ . '/views/bookmarks.php';
+        break;
+    case (preg_match('/favorite/i', $request) ? true : false):
+        require __DIR__ . '/views/favorite.php';
         break;
     case '/403':
         http_response_code(403);
