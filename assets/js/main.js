@@ -26,16 +26,12 @@ btn_darkmode.addEventListener("click", () => {
 
 function darkmode() {
   if (toggleDarkmode === "light") {
-    btn_darkmode.classList.remove("bg-green-700");
-    item_darkmode.classList.remove("translate-x-7");
     body.classList.remove("dark");
     if (logo) {
       logo.src = "./assets/image/logo-alt.svg";
     }
     toggleDarkmode = "dark";
   } else {
-    btn_darkmode.classList.add("bg-green-700");
-    item_darkmode.classList.add("translate-x-7");
     body.classList.add("dark");
     if (logo) {
       logo.src = "./assets/image/logo-alt2.svg";

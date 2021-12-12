@@ -1,10 +1,12 @@
 module.exports = {
-  purge: [],
-  darkMode: "class", // or 'media' or 'class'
+  darkMode: "class",
+  content: [
+    "app/**/*.{html,php}",
+    "./assets/js/*.{js}",
+    "./views/*.{html,php}",
+    "./views/component/*.{html,php}",
+  ],
   theme: {
-    extend: {},
-  },
-  variants: {
     extend: {},
   },
   plugins: [
