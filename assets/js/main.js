@@ -67,3 +67,18 @@ function getCookies(name) {
     .split("=")[1];
   return value;
 }
+
+// Modal Setting
+const btn_setting = document.querySelector("#btn_setting");
+const modal_setting = document.querySelector("#modal_setting");
+const btn_close_modal_setting = document.querySelector(
+  "#btn_close_modal_setting"
+);
+
+btn_setting.addEventListener("click", () => {
+  modal_setting.classList.toggle("hidden");
+});
+
+btn_close_modal_setting.addEventListener("click", () => {
+  modal_setting.classList.toggle("hidden");
+});
