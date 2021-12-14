@@ -19,74 +19,73 @@ $page = new Page($currentUrl);
 </head>
 
 <body class="">
-    <section class="h-screen">
-        <!-- Header -->
-        <?php $page->header("about") ?>
+    <!-- Header -->
+    <?php $page->header("about") ?>
 
-        <main class="bg-gray-200 dark:bg-gray-700 h-full">
-            <div class="max-w-6xl mx-auto px-4 pt-4 lg:pt-6">
-                <div class="flex justify-between dark:text-white">
+    <section class="lg:min-h-screen text-gray-600 bg-gray-200 dark:bg-gray-700 body-font">
 
-                    <!-- Breadcrumbs -->
-                    <?php $page->breadcrumb() ?>
-
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-5">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-50">Tim Kami</h1>
+            </div>
+            <div class="flex flex-wrap justify-center -m-6">
+                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                    <div class="h-full bg-white shadow flex items-center border-gray-200 border p-4 rounded-lg">
+                        <svg class="h-12 text-teal-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="flex-grow">
+                            <h2 class="text-gray-900 title-font font-medium">YUDHA PRATAMA PUTRA</h2>
+                            <p class="text-gray-500">18.11.2375 (Ketua)</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-2/6 bg-white rounded-lg shadow-sm p-8">
-                    <div class="flex flex-col mt-5 gap-7 text-sm">
-                        <div class="bg-yellow-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
-                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2375 (Ketua)</p>
-                                    <p class="text-gray-400 text-xs">YUDHA PRATAMA PUTRA</p>
-                                </div>
-                            </div>
+                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                    <div class="h-full bg-white shadow flex items-center border-gray-200 border p-4 rounded-lg">
+                        <svg class="h-12 text-sky-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="flex-grow">
+                            <h2 class="text-gray-900 title-font font-medium">MUHAMMAD DWI PRASETYO</h2>
+                            <p class="text-gray-500">18.11.2365</p>
                         </div>
-                        <div class="bg-green-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
-                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2365</p>
-                                    <p class="text-gray-400 text-xs">MUHAMMAD DWI PRASETYO</p>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                    <div class="h-full bg-white shadow flex items-center border-gray-200 border p-4 rounded-lg">
+                        <svg class="h-12 text-yellow-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="flex-grow">
+                            <h2 class="text-gray-900 title-font font-medium">CHANDRA AGUNG RIZKY</h2>
+                            <p class="text-gray-500">18.11.2354</p>
                         </div>
-                        <div class="bg-pink-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
-                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2354</p>
-                                    <p class="text-gray-400 text-xs">CHANDRA AGUNG RIZKY</p>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                    <div class="h-full bg-white shadow flex items-center border-gray-200 border p-4 rounded-lg">
+                        <svg class="h-12 text-red-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="flex-grow">
+                            <h2 class="text-gray-900 title-font font-medium">ANDRE ADI ANUWAR</h2>
+                            <p class="text-gray-500">18.11.2558</p>
                         </div>
-                        <div class="bg-indigo-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
-                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-gray-700 font-bold tracking-wider">18.11.2558</p>
-                                    <p class="text-gray-400 text-xs">ANDRE ADI ANUWAR</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-red-50 flex justify-between items-center p-3 rounded-sm shadow-sm">
-                            <div class="flex justify-start items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-gray-700 font-bold tracking-wider">18.11.1944</p>
-                                    <p class="text-gray-400 text-xs">MUH. ASADULLOH AL MUBAROK</p>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                    <div class="h-full bg-white shadow flex items-center border-gray-200 border p-4 rounded-lg">
+                        <svg class="h-12 text-indigo-400 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="flex-grow">
+                            <h2 class="text-gray-900 title-font font-medium">MUH. ASADULLOH AL MUBAROK</h2>
+                            <p class="text-gray-500">18.11.1944</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </section>
 
     <!-- Footer -->

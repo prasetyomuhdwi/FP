@@ -47,15 +47,17 @@ class Page
         }
     }
 
-    public function header($active_page = "")
+    public function header()
     {
         $loginClass = new Login();
         $accountComp = $loginClass->getComponent();
-
+        $active_page = $this->currentUrl[0];
         // <!-- Navbar goes here -->
-        echo "<nav class='bg-white dark:bg-gray-800 shadow-lg transition duration-300'>
+        echo "
+        <nav id='header' class='w-full bg-white dark:bg-gray-800 shadow-lg transition duration-300'>
+            <div id='progress' class='h-1 z-20 top-0' style='background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);'></div>
             <div class='max-w-6xl mx-auto px-4'>
-                <div class='flex justify-between'>
+                <div class='flex justify-between items-center'>
                     <div class='flex w-full space-x-7'>
                         <div>
                             <!-- Website Logo -->
@@ -66,9 +68,27 @@ class Page
                         </div>
                         <!-- Primary Navbar items -->
                         <div class='hidden w-full md:flex justify-center items-center space-x-1'>
-                            <a href='./' class='py-4 px-2 " . (($active_page == "home") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300") . "'>Home</a>
-                            <a href='./latest' class='py-4 px-2 " . (($active_page == "latest") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300") . "'>Latest</a>
-                            <a href='./about' class='py-4 px-2 " . (($active_page == "about") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 font-semibold hover:text-green-500 transition duration-300") . "'>About Us</a>
+                            <a href='./' class='py-4 px-2 " . (($active_page == "") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Beranda</a>
+                            <div class='relative'>
+                                <button id='btn-blog' class='py-4 px-2 inline-flex items-center" . (($active_page === "blog") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 dark:hover:text-green-600 transition duration-300") . "'>
+                                Blog  
+                                    <svg class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
+                                        <path fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' />
+                                    </svg>
+                                </button>
+                                <div id='blog-modal' class='hidden absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20'>
+                                    <a href='./blog?q=all' class='block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white'>
+                                        Semua Blog
+                                    </a>
+                                    <a href='./blog?q=latest' class='block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white'>
+                                        Blog Terbaru
+                                    </a>
+                                    <a href='./blog?q=trending' class='block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white'>
+                                        Blog Trending
+                                    </a>
+                                </div>
+                            </div>
+                            <a href='./about' class='py-4 px-2 " . (($active_page == "about") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Tentang</a>
                         </div>
                     </div>
                     <!-- Secondary Navbar items -->
@@ -93,13 +113,13 @@ class Page
             <!-- mobile menu -->
             <div class='hidden mobile-menu'>
                 <ul class='dark:bg-gray-600'>
-                    <li class='active'><a href='./' class='block text-sm px-2 py-4 " . (($active_page == "home") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Home</a></li>
-                    <li><a href='./latest' class='block text-sm px-2 py-4 " . (($active_page == "latest") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Latest</a></li>
-                    <li><a href='./about' class='block text-sm px-2 py-4 " . (($active_page == "about") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>About Us</a></li>
+                    <li class='active'><a href='./' class='block text-sm px-2 py-4 " . (($active_page == "home") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Beranda</a></li>
+                    <li><a href='./latest' class='block text-sm px-2 py-4 " . (($active_page == "latest") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Blog</a></li>
+                    <li><a href='./about' class='block text-sm px-2 py-4 " . (($active_page == "about") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Tentang</a></li>
                 </ul>
             </div>
 
-            <div id='modal_setting' class='hidden fixed inset-0 z-50 bg-gray-600 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-75 flex items-center justify-center p-3'>
+            <div id='modal_setting' class='hidden fixed inset-0 z-50 bg-gray-600 bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75 flex items-center justify-center p-3'>
                     <div class='bg-white dark:bg-gray-900 max-w-lg rounded-lg overflow-hidden px-3 lg:px-6 py-4 space-y-4'>
                         <div class='flex justify-center'>
                             <span class='inline-flex items-center bg-gray-200 bg-opacity-75 dark:bg-gray-50 rounded-full p-2'>
@@ -109,11 +129,11 @@ class Page
                             </span>
                         </div>
                         <div class='flex flex-col dark:text-gray-400 items-center text-center space-y-2'>
-                            <h1 class='font-semibold dark:text-gray-300'>Setting</h1>
+                            <h1 class='font-semibold dark:text-gray-300'>Pengaturan</h1>
                             <div class='w-64 p-2 bg-green-100 dark:bg-gray-800 rounded-lg shadow'>
                             
                                 <p class='leading-tight text-sm lg:text-base p-2'>
-                                    Change View Mode
+                                    Ubah Mode Tampilan
                                 </p>
 
                                 <div class='w-full h-full flex flex-col justify-center items-center'>
@@ -142,7 +162,7 @@ class Page
                         </div>
                         <div class='flex justify-center pt-4 dark:text-gray-300'>
                             <button id='btn_close_modal_setting' type='button' class='rounded-lg px-5 py-2 border-2 border-gray-300 focus:border-transparent focus:outline-none focus:bg-gray-800 focus:shadow-outline font-medium'>
-                                Close
+                                Tutup
                             </button>
                         </div>
                     </div>

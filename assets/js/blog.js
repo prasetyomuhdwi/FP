@@ -8,7 +8,6 @@ var h = document.documentElement,
   scroll;
 var scrollpos = window.scrollY;
 var header = document.getElementById("header");
-var navcontent = document.getElementById("nav-content");
 
 document.addEventListener("scroll", function () {
   /*Refresh scroll % width*/
@@ -19,14 +18,11 @@ document.addEventListener("scroll", function () {
   scrollpos = window.scrollY;
 
   if (scrollpos > 10) {
+    header.classList.add("fixed");
     header.classList.add("bg-white");
     header.classList.add("shadow");
-    navcontent.classList.remove("bg-gray-100");
-    navcontent.classList.add("bg-white");
   } else {
     header.classList.remove("bg-white");
     header.classList.remove("shadow");
-    navcontent.classList.remove("bg-white");
-    navcontent.classList.add("bg-gray-100");
   }
 });

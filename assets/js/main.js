@@ -46,9 +46,9 @@ const account_modal = document.querySelector("#account_modal");
 
 if (btn_account) {
   btn_account.addEventListener("click", () => {
-    account_modal.classList.remove("hidden");
+    account_modal.classList.toggle("hidden");
     setTimeout(() => {
-      account_modal.classList.add("hidden");
+      account_modal.classList.toggle("hidden");
       btn_account.blur();
     }, 3000);
   });
@@ -71,10 +71,26 @@ const btn_close_modal_setting = document.querySelector(
   "#btn_close_modal_setting"
 );
 
-btn_setting.addEventListener("click", () => {
-  modal_setting.classList.toggle("hidden");
-});
+if (btn_setting) {
+  btn_setting.addEventListener("click", () => {
+    modal_setting.classList.toggle("hidden");
+  });
 
-btn_close_modal_setting.addEventListener("click", () => {
-  modal_setting.classList.toggle("hidden");
-});
+  btn_close_modal_setting.addEventListener("click", () => {
+    modal_setting.classList.toggle("hidden");
+  });
+}
+
+// Modal Menu
+const btn_blog = document.querySelector("#btn-blog");
+const blog_modal = document.querySelector("#blog-modal");
+
+if (btn_blog) {
+  btn_blog.addEventListener("click", () => {
+    blog_modal.classList.toggle("hidden");
+    setTimeout(() => {
+      blog_modal.classList.toggle("hidden");
+      btn_blog.blur();
+    }, 2500);
+  });
+}
