@@ -1,56 +1,230 @@
+
+
 <?php
+
 class SignUpIn
 {
     private $login = "
-    <div class='px-5 py-7'>
-        <label class='font-semibold text-sm text-gray-600 pb-1 block'>E-mail</label>
-        <input type='text' class='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full' />
-        <label class='font-semibold text-sm text-gray-600 pb-1 block'>Kata Sandi</label>
-        <input type='text' class='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full' />
-        <button type='button' class='transition duration-200 bg-green-500 hover:bg-green-600 focus:bg-green-700 focus:shadow-sm focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block'>
-            <span class='inline-block mr-2'>Masuk</span>
-            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-4 h-4 inline-block'>
-                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 8l4 4m0 0l-4 4m4-4H3' />
-            </svg>
-        </button>
+    <form action='./login' method='POST'>
+    <div class='form-group mb-6'>
+        <label for='email' class='form-label inline-block mb-2 text-gray-700'>Email address</label>
+        <input type='email' class='form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='email' 
+        aria-describedby='email' name='email' placeholder='Enter email'>
     </div>
-    <div class='py-5'>
-        <div class='grid grid-cols-2 gap-1'>
-            <div class='col-start-3 col-end-7 text-center sm:text-left whitespace-nowrap'>
-                <button class='transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset'>
-                    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-4 h-4 inline-block align-text-top'>
-                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z' />
-                    </svg>
-                    <span class='inline-block ml-1'>Lupa Kata Sandi</span>
-                </button>
-            </div>
+    <div class='form-group mb-6'>
+        <label for='password' class='form-label inline-block mb-2 text-gray-700'>Password</label>
+        <input type='password' class='form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='password' 
+        placeholder='Password' name='password'>
+    </div>
+    <div class='flex justify-between items-center mb-6'>
+        <div class='form-group form-check'>
+            <input type='checkbox' class='form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer' id='exampleCheck2'>
+            <label class='form-check-label inline-block text-gray-800' for='exampleCheck2'>Remember me</label>
         </div>
-    </div>";
+        <a href='#!' class='ml-5 text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out'>Forgot
+            password?</a>
+    </div>
+    <button type='submit' class='
+      w-full
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out'>Sign in</button>
+    </p>
+</form>";
     private $register = "
-    <div class='px-5 py-7'>
-        <div class='step'>
-            <div class='relative'>
-                <label class='font-semibold text-sm text-gray-600 pb-1 block'>Username</label>
-                <input type='text' class='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full' />
+    
+    <form>
+    <div id='progress' class='grid grid-cols-2 gap-4 m-auto mb-6'>
+        <div class='border-t-4 border-emerald-400 pt-4'>
+            <p class='uppercase text-emerald-500 text-sm font-bold'>Akun</p>
+        </div>
+        <div class='border-t-4 border-gray-200 pt-4'>
+            <p class='uppercase text-gray-400 text-sm font-bold'>Personal</p>
+        </div>
+    </div>
+    
+    <hr class='text-emerald-200 py-2'>
+
+    <div class='step'>
+        <div class='form-group mb-6'>
+        <input type='text' class='form-control block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='username'
+            placeholder='Username' name='username'>
+        </div>
+        <div class='form-group mb-6'>
+        <input type='email' class='form-control block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='email'
+            placeholder='Alamat email' name='email'>
+        </div>
+        <div class='form-group mb-6'>
+        <input type='password' class='form-control block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='exampleInput126'
+            placeholder='Kata Sandi'>
+        </div>
+    </div>
+
+    <div class='step'>
+        <div class='form-group mb-6'>
+        <div class='m-4'>
+            <label class='inline-block mb-2 text-gray-500'>Upload
+                Image(jpg,png,svg,jpeg)</label>
+            <div class='flex items-center justify-center w-full'>
+                <label class='flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300'>
+                    <div class='flex flex-col items-center justify-center pt-7'>
+                        <svg xmlns='http://www.w3.org/2000/svg'
+                            class='w-12 h-12 text-gray-400 group-hover:text-gray-600' viewBox='0 0 20 20'
+                            fill='currentColor'>
+                            <path fill-rule='evenodd'
+                                d='M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z'
+                                clip-rule='evenodd' />
+                        </svg>
+                        <p class='pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600'>
+                            Select a photo</p>
+                    </div>
+                    <input type='file' class='opacity-0' />
+                </label>
             </div>
-            <label class='font-semibold text-sm text-gray-600 pb-1 block'>E-mail</label>
-            <input type='email' class='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full' />
-            <label class='font-semibold text-sm text-gray-600 pb-1 block'>Kata Sandi</label>
-            <input type='text' class='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full' />
         </div>
-        <div class='step'>
-            <label class='font-semibold text-sm text-gray-600 pb-1 block'>Nama Lengkap</label>
-            <input type='text' class='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full' />
-            <label class='font-semibold text-sm text-gray-600 pb-1 block'>Bio</label>
-            <textarea class='w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none' rows='4'></textarea>
         </div>
-        <button type='button' class='transition duration-200 bg-green-500 hover:bg-green-600 focus:bg-green-700 focus:shadow-sm focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block'>
-            <span class='inline-block mr-2'>Masuk</span>
-            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-4 h-4 inline-block'>
-                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 8l4 4m0 0l-4 4m4-4H3' />
-            </svg>
-        </button>
-    </div>";
+        <div class='form-group mb-6'>
+        <input type='text' class='form-control block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='fullname'
+            placeholder='Nama Lengkap' name='fullname'>
+        </div>
+        <div class='form-group mb-6'>
+            <div class='mb-3 xl:w-96'>
+                <textarea
+                class='
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+                id='exampleFormControlTextarea1'
+                rows='3'
+                placeholder='Bio'
+                ></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <button type='submit' class='
+      w-full
+      px-6
+      py-2.5
+      bg-emerald-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-emerald-700 hover:shadow-lg
+      focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-emerald-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out'>Daftar</button>
+  </form>";
     private $forgetPass = "
         
     ";
@@ -72,16 +246,16 @@ class SignUpIn
     {
         switch ($urlString) {
             case 'login':
-                $title = "Login";
+                $title = "Masuk";
                 $tmp1 = "Belum";
                 $tmp2 = " Registrasi Sekarang";
                 $link = "register";
                 break;
 
             default:
-                $title = "Register";
+                $title = "Registrasi";
                 $tmp1 = "Sudah";
-                $tmp2 = " Login Disini";
+                $tmp2 = " Masuk Disini";
                 $link = "login";
                 break;
         }

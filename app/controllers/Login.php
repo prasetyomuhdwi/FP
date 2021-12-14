@@ -1,43 +1,76 @@
 <?php
+session_start();
+require_once("./app/controllers/Validate.php");
+
 class Login
 {
     private $mAuth = true;
+    private $app_root = '';
 
-    function isLogin()
+    public function __construct()
+    {
+        $this->mAuth = (empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') ? false : true;
+        $this->app_root = parse_ini_file('./app/app.ini')['app_root'];
+    }
+
+    public function isLogin()
     {
         return $this->mAuth;
     }
 
-    public function getComponent()
+    public function needAuth()
     {
-        if ($this->mAuth) {
-            return "
-            <div class='relative w-48 cursor-pointer'>
-
-                <div id='btn_account' class='inline-flex items-center rounded-full bg-white dark:bg-transparent border hover:border-4 border-gray-200 hover:border-gray-500 p-1'>
-                    <img
-                      class='w-8 h-8 object-cover rounded-full'
-                      src='./assets/image/default-user.jpeg'
-                      alt='Avatar'
-                    />
-                    <span class='px-1 text-sm dark:text-gray-200 dark:hover:text-gray-100 focus:text-gray-50 '>prasetyomuhdwi</span>
-                </div>
-                
-               
-                <div id='account_modal' class='absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 hidden'>
-                    <div class='px-2 py-2 bg-gray-50 dark:bg-gray-600 border-2 border-green-600 dark:border-white border-opacity-50 rounded-md shadow transition duration-300'>
-                        <button id='btn_setting' class='w-full text-left block px-4 py-2 mt-2 bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 active:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>Pengaturan</button>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./profile'>Profil</a>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./bookmark'>Bookmarks</a>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./favorit'>Favorite</a>
-                    </div>
-                </div>
-                
-            </div>";
-        } else {
-            return "
-            <a href='./login' class='py-2 px-2 mr-2 rounded font-medium text-gray-500 hover:bg-gray-200 focus:bg-gray-300 dark:text-gray-50 dark:hover:bg-gray-700 dark:focus:bg-gray-900 transition duration-300'>Masuk</a>
-            <a href='./register' class='py-2 px-2 rounded font-medium text-white bg-green-500 hover:bg-green-600 focus:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 dark:focus:bg-green-900 transition duration-300'>Daftar</a>";
+        if (!$this->mAuth) {
+            header('Location: ./login');
+            die();
         }
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location: ./');
+        die();
+    }
+
+    public function login()
+    {
+        $validateClass = new Validate();
+
+        if (!empty($_POST["email"]) && !empty($_POST["password"])) {
+            $email = $this->dataCleaner($_POST["email"]);
+            $password = $this->dataCleaner($_POST["password"]);
+
+            if (
+                $validateClass->vPassword($password)[0] &&
+                $validateClass->vEmail($email)[0]
+            ) {
+                if ($email == 'user@mail.com' && $password == 'Testaja123') {
+                    $_SESSION["authenticated"] = 'true';
+                    header('Location: ./');
+                    die();
+                } else {
+                    header('refresh:3;url=' . $this->app_root . '/register');
+                    echo "<b>Anda belum memiliki akun</b><br>";
+                    echo "You'll be redirected in about 3 secs. If not, click <a href=" . $this->app_root . "/register'>here</a>.";
+                    die();
+                }
+            } else {
+
+                echo $validateClass->vEmail($email)[1];
+                echo $validateClass->vPassword($password)[1];
+            }
+        } else {
+            header('Location: ./login');
+            die();
+        }
+    }
+
+    public function dataCleaner($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 }

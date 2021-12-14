@@ -14,12 +14,15 @@
 
 1. buka folder app
 2. rename file app_copy.ini menjadi app.ini
-3. Isi data database anda pada app.ini
+3. buka app.ini
+4. Isi data database kalian
 
 ### ! Jika nama folder utamanya (root) bukan FP
 
 1. buka file .htaccess
 2. ganti RewriteBase -nya jadi nama folder kalian
+3. buka file app.ini
+4. ganti app_path dan app_root menjadi nama folder utama kalian
 
 ### ! Untuk menghindari lag atau bug di tailwindcss saat development
 

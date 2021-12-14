@@ -1,14 +1,11 @@
 <?php
-require_once(__DIR__ . '/app/controllers/Login.php');
 require_once("./views/component/Page.php");
-
+require_once(__DIR__ . '/app/controllers/Login.php');
 $loginClass = new Login();
-$islogin = $loginClass->isLogin();
-$accountComp = $loginClass->getComponent();
 
 $request = $_SERVER['REQUEST_URI'];
 $config = parse_ini_file(__DIR__ . '/app/app.ini');
-$request = "/" . trim($request, $config['app_root']);
+$request = "/" . trim($request, $config['app_path']);
 
 switch ($request) {
     case '/':
@@ -17,8 +14,15 @@ switch ($request) {
     case '/about':
         require __DIR__ . '/views/about.php';
         break;
+    case '/logout':
+        $loginClass->logout();
+        break;
     case '/login':
-        require __DIR__ . '/views/templates.php';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $loginClass->login($_POST["email"], $_POST["password"]);
+        } else {
+            require __DIR__ . '/views/templates.php';
+        }
         break;
     case '/register':
         require __DIR__ . '/views/templates.php';
