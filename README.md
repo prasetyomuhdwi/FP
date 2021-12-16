@@ -10,6 +10,10 @@
   - ANDRE ADI ANUWAR 18.11.2558
   - MUH. ASADULLOH AL MUBAROK 18.11.1944
 
+## Update Note
+
+- Ubah cara routing mengikuti Tutorial Web Programming UNPAS "Membuat Aplikasi MVC dengan PHP"
+
 ## Instalasi app
 
 1. buka folder app
@@ -45,4 +49,10 @@
 
 #### Just Note
 
+```php
+// Alternative penulisan php echo
+<?= $variable; ?> = <?php echo;?>
+```
+
 [cara install tailwindcss di html](https://themesberg.com/knowledge-center/tailwind-css/html)
+[Membuat Aplikasi MVC dengan PHP WP UNPAS](https://www.youtube.com/playlist?list=PLFIM0718LjIVEh_d-h5wAjsdv2W4SAtkx)

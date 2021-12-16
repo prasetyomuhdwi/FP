@@ -1,58 +1,19 @@
 <?php
-require_once('./app/controllers/Login.php');
-
-class Page
+class PageComp
 {
     private $currentUrl;
+    private $baseUrl;
 
-    function __construct($currentUrl)
+    function __construct($currentUrl = [], $baseUrl)
     {
         $this->currentUrl = $currentUrl;
-    }
-
-    public function breadcrumb()
-    {
-        $currentUrl = $this->currentUrl;
-
-        if ($currentUrl[0] != "") {
-            echo "
-            <ul class='flex text-gray-500 text-sm lg:text-base'>
-                <li class='inline-flex items-center'>
-                    <a class='inline-flex text-gray-400 dark:text-gray-300' href='./'>
-                        <svg xmlns='http://www.w3.org/2000/svg' class='w-5 h-5' viewBox='0 0 20 20' fill='currentColor'>
-                            <path d='M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z' />
-                        </svg>
-                        <p>Home</p>
-                    </a>
-                    <svg class='h-5 w-auto text-gray-400' fill='currentColor' viewBox='0 0 20 20'>
-                        <path fill-rule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clip-rule='evenodd'></path>
-                    </svg>
-                </li>";
-            foreach ($currentUrl as $key => $value) {
-                if ($key != (count($currentUrl) - 1)) {
-                    echo "
-                    <li class='inline-flex items-center'>
-                        <a class='text-gray-600 dark:text-gray-200' href='" . $value . "'>" . ucfirst($value) . "</a>
-                        <svg class='h-5 w-auto text-gray-400' fill='currentColor' viewBox='0 0 20 20'>
-                            <path fill-rule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clip-rule='evenodd'></path>
-                        </svg>
-                    </li>";
-                } else {
-                    echo "
-                    <li class='inline-flex items-center'>
-                        <a href='" . $value . "' class='text-blue-500 dark:text-blue-300'>" . ucfirst($value) . "</a>
-                    </li>";
-                }
-            }
-            echo "</ul>";
-        }
+        $this->baseUrl = $baseUrl;
     }
 
     public function header()
     {
         $loginClass = new Login();
-        $active_page = $this->currentUrl[0];
-
+        $active_page = $this->currentUrl;
         // Navbar
         echo "
         <nav id='header' class='w-full bg-white dark:bg-gray-800 shadow-lg transition duration-300'>
@@ -62,34 +23,34 @@ class Page
                     <div class='flex w-full space-x-7'>
                         <div>
                             <!-- Website Logo -->
-                            <a href='./' class='flex items-end py-4 px-2'>
-                                <img src='./assets/image/logo.svg' alt='Logo' class='h-8 w-8 mr-2 transition duration-300'>
+                            <a href='" . $this->baseUrl . "/' class='flex items-end py-4 px-2'>
+                                <img src='" . $this->baseUrl . "/assets/image/logo.svg' alt='Logo' class='h-8 w-8 mr-2 transition duration-300'>
                                 <span class='font-semibold text-gray-500 dark:text-gray-50 text-lg'>ToPlanter</span>
                             </a>
                         </div>
                         <!-- Primary Navbar items -->
                         <div class='hidden w-full md:flex justify-center items-center space-x-1'>
-                            <a href='./' class='py-4 px-2 " . (($active_page == "") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Beranda</a>
+                            <a href='" . $this->baseUrl . "/' class='py-4 px-2 " . (($active_page[0] == "") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Beranda</a>
                             <div class='relative'>
-                                <button id='btn-blog' class='py-4 px-2 inline-flex items-center" . (($active_page === "blog") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 dark:hover:text-green-600 transition duration-300") . "'>
+                                <button id='btn-blog' class='py-4 px-2 inline-flex items-center" . (($active_page[0] == "blog") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 dark:hover:text-green-600 transition duration-300") . "'>
                                 Blog  
                                     <svg class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
                                         <path fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' />
                                     </svg>
                                 </button>
                                 <div id='blog-modal' class='hidden absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20'>
-                                    <a href='./blog?q=all' class='block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white'>
+                                    <a href='" . $this->baseUrl . "/blogs' class='block px-4 py-2 text-sm capitalize " . (($active_page[1] == "all") ? " bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
                                         Semua Blog
                                     </a>
-                                    <a href='./blog?q=latest' class='block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white'>
+                                    <a href='" . $this->baseUrl . "/blogs/latest' class='block px-4 py-2 text-sm capitalize " . (($active_page[1] == "latest") ? "bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
                                         Blog Terbaru
                                     </a>
-                                    <a href='./blog?q=trending' class='block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white'>
-                                        Blog Trending
+                                    <a href='" . $this->baseUrl . "/blogs/tags' class='block px-4 py-2 text-sm capitalize " . (($active_page[1] == "tags") ? "bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
+                                        Tag Blog
                                     </a>
                                 </div>
                             </div>
-                            <a href='./about' class='py-4 px-2 " . (($active_page == "about") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Tentang</a>
+                            <a href='" . $this->baseUrl . "/page/about' class='py-4 px-2 " . (($active_page[0] == "about") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Tentang</a>
                         </div>
                     </div>
                     <!-- Secondary Navbar items -->
@@ -102,7 +63,7 @@ class Page
                 <div id='btn_account' class='inline-flex items-center rounded-full bg-white dark:bg-transparent border hover:border-4 border-gray-200 hover:border-gray-500 p-1'>
                     <img
                       class='w-8 h-8 object-cover rounded-full'
-                      src='./assets/image/default-user.jpeg'
+                      src='" . $this->baseUrl . "/assets/image/default-user.jpeg'
                       alt='Avatar'
                     />
                     <span class='px-1 text-sm dark:text-gray-200 dark:hover:text-gray-100 focus:text-gray-50 '>prasetyomuhdwi</span>
@@ -112,18 +73,18 @@ class Page
                 <div id='account_modal' class='absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 hidden'>
                     <div class='px-2 py-2 bg-gray-50 dark:bg-gray-600 border-2 border-green-600 dark:border-white border-opacity-50 rounded-md shadow transition duration-300'>
                         <button id='btn_setting' class='w-full text-left block px-4 py-2 mt-2 bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 active:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>Pengaturan</button>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./profile'>Profil</a>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./bookmark'>Bookmarks</a>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./favorit'>Favorite</a>
-                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='./logout'>Keluar</a>
+                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='" . $this->baseUrl . "/accounts/profile'>Profil</a>
+                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='" . $this->baseUrl . "/accounts/bookmark'>Bookmarks</a>
+                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='" . $this->baseUrl . "/accounts/favorit'>Favorite</a>
+                        <a class='block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 dark:text-gray-50 dark:hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' href='" . $this->baseUrl . "/auth/logout'>Keluar</a>
                     </div>
                 </div>
                 
             </div>";
         } else {
             echo "
-            <a href='./login' class='py-2 px-2 mr-2 rounded font-medium text-gray-500 hover:bg-gray-200 focus:bg-gray-300 dark:text-gray-50 dark:hover:bg-gray-700 dark:focus:bg-gray-900 transition duration-300'>Masuk</a>
-            <a href='./register' class='py-2 px-2 rounded font-medium text-white bg-green-500 hover:bg-green-600 focus:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 dark:focus:bg-green-900 transition duration-300'>Daftar</a>";
+            <a href='" . $this->baseUrl . "/auth/login' class='py-2 px-2 mr-2 rounded font-medium text-gray-500 hover:bg-gray-200 focus:bg-gray-300 dark:text-gray-50 dark:hover:bg-gray-700 dark:focus:bg-gray-900 transition duration-300'>Masuk</a>
+            <a href='" . $this->baseUrl . "/auth/register' class='py-2 px-2 rounded font-medium text-white bg-green-500 hover:bg-green-600 focus:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 dark:focus:bg-green-900 transition duration-300'>Daftar</a>";
         }
 
 
@@ -143,9 +104,9 @@ class Page
             <!-- mobile menu -->
             <div class='hidden mobile-menu'>
                 <ul class='dark:bg-gray-600'>
-                    <li class='active'><a href='./' class='block text-sm px-2 py-4 " . (($active_page == "home") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Beranda</a></li>
-                    <li><a href='./blog?q=all' class='block text-sm px-2 py-4 " . (($active_page == "blog") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Blog</a></li>
-                    <li><a href='./about' class='block text-sm px-2 py-4 " . (($active_page == "about") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Tentang</a></li>
+                    <li class='active'><a href='" . $this->baseUrl . "/' class='block text-sm px-2 py-4 " . (($active_page[0] == "home") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Beranda</a></li>
+                    <li><a href='" . $this->baseUrl . "/blog?q=all' class='block text-sm px-2 py-4 " . (($active_page[0] == "blog") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Blog</a></li>
+                    <li><a href='" . $this->baseUrl . "/about' class='block text-sm px-2 py-4 " . (($active_page[0] == "about") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Tentang</a></li>
                 </ul>
             </div>
 
@@ -207,7 +168,7 @@ class Page
             <div class='max-w-6xl mx-auto px-4'>
                 <div class='container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col'>
                     <a class='flex title-font font-medium items-center md:justify-start justify-center text-gray-900'>
-                        <img src='./assets/image/logo.svg' alt='logo' class='h-10'>
+                        <img src='" . $this->baseUrl . "/assets/image/logo.svg' alt='logo' class='h-10'>
                         <span class='ml-3 font-semibold text-gray-500 dark:text-gray-50 text-lg'>ToPlanter</span>
                     </a>
                     <p class='text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4'>© 2021 ToPlanter</p>

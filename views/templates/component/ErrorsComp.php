@@ -1,5 +1,5 @@
 <?php
-class Errors
+class ErrorsComp
 {
     private $httpCode;
 

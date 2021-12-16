@@ -1,35 +1,3 @@
-<?php
-
-$currentUrl = trim($request, "/");
-$currentUrl = explode("/", $currentUrl);
-$currentUrl = explode("?", $currentUrl[0]);
-$page = new Page($currentUrl);
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Blog</title>
-	<meta name="author" content="name" />
-	<meta name="description" content="description here" />
-	<meta name="keywords" content="keywords,here" />
-
-	<link rel="icon" href="./assets/image/logo.svg">
-	<link rel="stylesheet" href="./assets/css/tailwindcss.css">
-
-</head>
-
-
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-
-
-	<!-- Header -->
-	<?php $page->header() ?>
-
-
 	<!--Container-->
 	<div class="dark:bg-gray-900">
 		<div class="container w-full md:max-w-3xl mx-auto pt-20">
@@ -130,14 +98,3 @@ $page = new Page($currentUrl);
 		</div>
 	</div>
 	<!--/container-->
-
-	<!-- Footer -->
-	<?php $page->footer() ?>
-
-	<script src="./assets/js/jquery-3.4.1.min.js"></script>
-	<script src="./assets/js/main.js"></script>
-	<script src="./assets/js/blog.js"></script>
-
-</body>
-
-</html>

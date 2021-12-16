@@ -4,8 +4,12 @@
 
 class SignUpIn
 {
-    private $login = "
-    <form action='./login' method='POST'>
+    private $baseUrl = '';
+
+    private function login()
+    {
+        return "
+    <form action='" . $this->baseUrl . "/login' method='POST'>
     <div class='form-group mb-6'>
         <label for='email' class='form-label inline-block mb-2 text-gray-700'>Email address</label>
         <input type='email' class='form-control
@@ -71,7 +75,10 @@ class SignUpIn
       ease-in-out'>Sign in</button>
     </p>
 </form>";
-    private $register = "
+    }
+    private function register()
+    {
+        return "
     
     <form>
     <div id='progress' class='grid grid-cols-2 gap-4 m-auto mb-6'>
@@ -225,15 +232,24 @@ class SignUpIn
       duration-150
       ease-in-out'>Daftar</button>
   </form>";
-    private $forgetPass = "
-        
-    ";
+    }
+
+    private function forgetPass()
+    {
+        return "";
+    }
+
+    public function __construct($baseUrl)
+    {
+        $this->baseUrl = $baseUrl;
+    }
+
 
     public function component($componentName)
     {
         switch ($componentName) {
             case 'login':
-                return $this->login;
+                return $this->login();
                 break;
 
             default:
