@@ -13,6 +13,11 @@
 ## Update Note
 
 - Ubah cara routing mengikuti Tutorial Web Programming UNPAS "Membuat Aplikasi MVC dengan PHP"
+- app/controllers/pages adalah tempat mengarahkan user ke tampilan halaman berdasarkan nama file (controller) dan methodnya, serta memberikan data ke halaman
+- app/core/App.php adalah tempat memecah url request menjadi nama file (controller) , method, dan parameter
+- app/core/Controller.php adalah tempat mengambil views, dan data app.ini
+- app/init.php adalah tempat mendeklarasikan file php yang ingin di sertakan
+- file views ditempatkan di folder sesuai dengan nama controllers/pages yang mengaturnya
 
 ## Instalasi app
 
