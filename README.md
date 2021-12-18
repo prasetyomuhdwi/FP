@@ -4,12 +4,13 @@
 - Build with : _PHP Native_ and _tailwindcss_
 - Our Team :
 
-  | Nama | NIM
-  | YUDHA PRATAMA PUTRA | 18.11.2375 (Ketua)
-  | MUHAMMAD DWI PRASETYO | 18.11.2365
-  | CHANDRA AGUNG RIZKY | 18.11.2354
-  | ANDRE ADI ANUWAR | 18.11.2558
-  | MUH. ASADULLOH AL MUBAROK | 18.11.1944
+| Nama  | NIM | Status |
+| ------------- |:-------------:|:-------------:|
+| YUDHA PRATAMA PUTRA | 18.11.2375 | Ketua |
+| MUHAMMAD DWI PRASETYO | 18.11.2365 | Wakil |
+| CHANDRA AGUNG RIZKY | 18.11.2354 | Anggota |
+| ANDRE ADI ANUWAR | 18.11.2558 | Anggota |
+| MUH. ASADULLOH AL MUBAROK | 18.11.1944 | Anggota |
 
 ## Update Note
 
