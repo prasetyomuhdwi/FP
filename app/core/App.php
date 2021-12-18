@@ -43,7 +43,7 @@ class App
         // Jalankan Controller,method, serta kirimkan params
         try {
             call_user_func_array([$this->controller, $this->method], $this->params);
-        } catch (\Throwable $th) {
+        } catch (ErrorException $e) {
             require_once './app/controllers/pages/Page.php';
             $this->controller = new Page;
             $this->method = 'internalServerError';

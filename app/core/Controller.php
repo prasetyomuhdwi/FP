@@ -1,11 +1,9 @@
 <?php
 class Controller
 {
-    private $config = [];
-
-    public function __construct()
+    private function config()
     {
-        $this->config = parse_ini_file('./app/app.ini');
+        return parse_ini_file('./app/app.ini');
     }
 
     public function view($view, $data = [])
@@ -21,17 +19,17 @@ class Controller
 
     public function absUrl()
     {
-        return $this->config['app_root'];
+        return $this->config()['app_root'];
     }
 
     public function dbInfo()
     {
         return [
-            'db_type' => $this->config['db_type'],
-            'db_name' => $this->config['db_name'],
-            'db_host' => $this->config['db_host'],
-            'db_user' => $this->config['db_user'],
-            'db_password' => $this->config['db_password']
+            'db_type' => $this->config()['db_type'],
+            'db_name' => $this->config()['db_name'],
+            'db_host' => $this->config()['db_host'],
+            'db_user' => $this->config()['db_user'],
+            'db_password' => $this->config()['db_password']
         ];
     }
 }

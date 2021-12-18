@@ -27,6 +27,9 @@
   - koneksi yang digunakan di `app/core/Database.php` adalah koneksi dengan `PDO`
   - menambah info host dan type database di file `app/app.ini`
   - `app/controllers/middleware` adalah tempat pengubung antara `pages` dengan `model`
+- v2.0.1.1
+  - ubah cara init class di `app/init.php` menggunakan `spl_autoload_register($className)`
+  - Menambahkan Fungsi Login
 
 ## Instalasi app
 

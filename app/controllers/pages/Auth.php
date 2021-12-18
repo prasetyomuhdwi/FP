@@ -22,7 +22,6 @@ class Auth extends Controller
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
-
         $this->view('templates/header', $dataComp);
         $this->view('auth/authPage', $data);
         $this->view('templates/footer', $dataComp);

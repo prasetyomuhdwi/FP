@@ -33,17 +33,17 @@ class AuthMiddleware extends Controller
                     $validateClass->vPassword($password)[0] &&
                     $validateClass->vEmail($email)[0]
                 ) {
-                    var_dump([$password, $email]);
-                    // if ($email == 'user@mail.com' && $password == 'Testaja123') {
-                    //     $_SESSION["authenticated"] = 'true';
-                    //     header('Location: ' . $this->absUrl() . '/');
-                    //     die();
-                    // } else {
-                    //     header('refresh:3;url=' . $this->absUrl() . '/auth/register');
-                    //     echo "<b>Anda belum memiliki akun</b><br>";
-                    //     echo "You'll be redirected in about 3 secs. If not, click <a href=" . $this->absUrl() . "/auth/register'>here</a>.";
-                    //     die();
-                    // }
+                    $model = new UsersModel;
+                    $user = $model->getUserByEmailAndPassword($email, $password);
+                    if ($user) {
+                        $_SESSION["authenticated"] = 'true';
+                        $_SESSION["user"] = $user;
+                        header('Location: ' . $this->absUrl() . '/');
+                        die();
+                    } else {
+                        header('Location: ' . $this->absUrl() . '/auth/register');
+                        die();
+                    }
                 } else {
 
                     echo $validateClass->vEmail($email)[1];
@@ -55,6 +55,16 @@ class AuthMiddleware extends Controller
             }
         } else {
             header('location: ' . $this->absUrl() . '/auth/login');
+            die();
+        }
+    }
+
+    public function register(String $username, String $fullname, String $email, String $password, $bio, $avatar_path = NULL)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $validateClass = new Validate();
+        } else {
+            header('location: ' . $this->absUrl() . '/auth/register');
             die();
         }
     }

@@ -1,13 +1,22 @@
 <?php
+// Otomatis Load Class Berdasarkan Nama classnya
+// Nama Class otomatis terisi oleh sistem 
+// jika dibutuhkan (require)
 
-require_once 'core/App.php';
-require_once 'core/Controller.php';
-require_once 'core/Database.php';
+spl_autoload_register(function ($class_name) {
+    if (file_exists(__DIR__ . '/core/' . $class_name . '.php')) {
+        require_once __DIR__ . '/core/' . $class_name . '.php';
+    }
 
-require_once('controllers/middleware/Auth.php');
-require_once('controllers/middleware/User.php');
-require_once('controllers/middleware/Validate.php');
+    if (file_exists(__DIR__ . '/controllers/middleware/' . $class_name . '.php')) {
+        require_once __DIR__ . '/controllers/middleware/' . $class_name . '.php';
+    }
 
-require_once __DIR__ . '/../views/templates/component/ErrorsComp.php';
-require_once __DIR__ . '/../views/templates/component/PageComp.php';
-require_once __DIR__ . '/../views/templates/component/SignUpIn.php';
+    if (file_exists(__DIR__ . '/../views/templates/component/' . $class_name . '.php')) {
+        require_once __DIR__ . '/../views/templates/component/' . $class_name . '.php';
+    }
+
+    if (file_exists(__DIR__ . '/models/' . $class_name . '.php')) {
+        require_once __DIR__ . '/models/' . $class_name . '.php';
+    }
+});
