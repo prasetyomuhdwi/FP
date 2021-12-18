@@ -1,13 +1,19 @@
 CREATE DATABASE `pwl_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-SET NAMES utf8mb4;
 
+DROP TABLE IF EXISTS `bookmarks`;
+DROP TABLE IF EXISTS `likes`;
+DROP TABLE IF EXISTS `comments`;
+DROP TABLE IF EXISTS `blogs`;
 DROP TABLE IF EXISTS `tags`;
+DROP TABLE IF EXISTS `users`;
+
+
 CREATE TABLE `tags` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
@@ -16,11 +22,12 @@ CREATE TABLE `tags` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `users`;
+
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL UNIQUE,
   `fullname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
   `password` text NOT NULL,
   `bio` text DEFAULT NULL,
   `role` varchar(100) NOT NULL DEFAULT 'user',
@@ -31,7 +38,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `blogs`;
+
 CREATE TABLE `blogs` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tags_id` bigint(20) NOT NULL,
@@ -51,7 +58,6 @@ CREATE TABLE `blogs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-DROP TABLE IF EXISTS `bookmarks`;
 CREATE TABLE `bookmarks` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `blog_id` bigint(20) NOT NULL,
@@ -67,7 +73,6 @@ CREATE TABLE `bookmarks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `blog_id` bigint(20) NOT NULL,
@@ -85,7 +90,6 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `blog_id` bigint(20) NOT NULL,
@@ -98,7 +102,7 @@ CREATE TABLE `likes` (
   CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `users` (`username`,`fullname`,`password`,`bio`,`role`,`created_at`) VALUES ('admin','admin fp pwl','adminFP123','saya adalah admin yang bertugas untuk mengawasi dan mengatur website','baas',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`role`,`created_at`) VALUES ('admin','admin fp pwl','admin@mail.com','adminFP123','saya adalah admin yang bertugas untuk mengawasi dan mengatur website','baas',CURRENT_TIMESTAMP);
 
 INSERT INTO `tags` (`name`,`created_at`) VALUES ('Tanaman Hias',CURRENT_TIMESTAMP);
 INSERT INTO `tags` (`name`,`created_at`) VALUES ('Tanaman Obat',CURRENT_TIMESTAMP);

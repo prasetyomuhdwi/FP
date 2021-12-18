@@ -46,7 +46,7 @@ class App
         } catch (\Throwable $th) {
             require_once './app/controllers/pages/Page.php';
             $this->controller = new Page;
-            $this->method = 'notFound';
+            $this->method = 'internalServerError';
             call_user_func_array([$this->controller, $this->method], $this->params);
         }
     }

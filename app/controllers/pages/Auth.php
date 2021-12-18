@@ -1,6 +1,7 @@
 <?php
 class Auth extends Controller
 {
+    // GET
     public function login()
     {
         $sign = new SignUpIn($this->absUrl());
@@ -58,5 +59,26 @@ class Auth extends Controller
         $this->view('templates/header', $dataComp);
         $this->view('auth/authPage', $data);
         $this->view('templates/footer', $dataComp);
+    }
+
+    // POST
+    public function signin()
+    {
+        $middleware = new AuthMiddleware;
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+        $email = $this->dataCleaner($email);
+        $password = $this->dataCleaner($password);
+
+        $middleware->login($email, $password);
+    }
+
+    public function dataCleaner($data)
+    {
+        $data = trim($data);
+        $data = htmlspecialchars($data);
+        $data = strip_tags($data);
+        $data = stripslashes($data);
+        return $data;
     }
 }

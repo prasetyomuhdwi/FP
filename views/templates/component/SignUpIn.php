@@ -9,7 +9,7 @@ class SignUpIn
     private function login()
     {
         return "
-    <form action='" . $this->baseUrl . "/api/login' method='POST'>
+    <form action='" . $this->baseUrl . "/auth/signin' method='POST'>
     <div class='form-group mb-6'>
         <label for='email' class='form-label inline-block mb-2 text-gray-700'>Alamat Email</label>
         <input type='email' class='form-control

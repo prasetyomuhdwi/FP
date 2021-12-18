@@ -12,7 +12,7 @@ class PageComp
 
     public function header()
     {
-        $loginClass = new Login();
+        $loginClass = new AuthMiddleware();
         $active_page = $this->currentUrl;
         // Navbar
         echo "
