@@ -8,9 +8,9 @@
     <title><?= $data['title'] ?></title>
     <link rel="icon" href="<?= $data['baseUrl'] ?>/assets/image/logo.svg">
     <link rel="stylesheet" href="<?= $data['baseUrl'] ?>/assets/css/tailwindcss.css">
-    <?= $data['css'] ?>
+    <?= (isset($data['css'])) ? $data['css'] : ""; ?>
 </head>
 
-<body class="<?= ($data['class-body']) ? $data['class-body'] : ""  ?>">
+<body class="<?= ((isset($data['class-body'])) ? $data['class-body'] : "")  ?>">
 
     <?= ($data['useNav']) ? $data['pageComp']->header() : "" ?>

@@ -1,7 +1,5 @@
-<?php $unsplash = "https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"; ?>
-
 <div class="min-h-screen bg-emerald-500 grid grid-cols-2">
-    <div class="w-full h-full bg-no-repeat bg-cover bg-sky-400 bg-[url(<?= $unsplash ?>)]"></div>
+    <div class="w-full h-full bg-auth"></div>
     <div class="p-10 xs:p-0 md:w-full md:max-w-2xl">
         <div class="flex justify-center items-center p-4 pb-8">
             <a href="<?= $data['baseUrl'] ?>/">

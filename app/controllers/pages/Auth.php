@@ -8,10 +8,19 @@ class Auth extends Controller
         $data['component'] = $sign->component('login');
 
         $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
-        $dataComp['css'] = "<link rel='stylesheet' href='" . $this->absUrl() . "/assets/css/style.css'>";
+        $dataComp['css'] = "
+        <style>
+            .bg-auth {
+                background-image: url('" . $this->absUrl() . "/assets/image/bg-tanam.jpeg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        </style>";
         $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
         $dataComp['title'] = "Login";
         $dataComp['useNav'] = false;
+
+        $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
         $this->view('auth/authPage', $data);
@@ -28,17 +37,26 @@ class Auth extends Controller
     public function register()
     {
         $sign = new SignUpIn($this->absUrl());
-        $dataComp['content'] = $sign->content('register');
-        $dataComp['component'] = $sign->component('register');
+        $data['content'] = $sign->content('register');
+        $data['component'] = $sign->component('register');
 
-        $dataComp['baseUrl'] = $this->absUrl();
-        $dataComp['css'] = "<link rel='stylesheet' href='" . $this->absUrl() . "/assets/css/style.css'>";
+        $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
+        $dataComp['css'] = "
+        <style>
+            .bg-auth {
+                background-image: url('" . $this->absUrl() . "/assets/image/bg-tanam.jpeg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        </style>";
         $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
         $dataComp['title'] = "Daftar";
         $dataComp['useNav'] = false;
 
+        $dataComp['pageComp'] = new PageComp([], $this->absUrl());
+
         $this->view('templates/header', $dataComp);
-        $this->view('auth/authPage', $dataComp);
+        $this->view('auth/authPage', $data);
         $this->view('templates/footer', $dataComp);
     }
 }

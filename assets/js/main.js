@@ -1,10 +1,11 @@
 // Menu Mobile
 const btn = document.querySelector("button.mobile-menu-button");
 const menu = document.querySelector(".mobile-menu");
-
-btn.addEventListener("click", () => {
-  menu.classList.toggle("hidden");
-});
+if (btn) {
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+}
 
 // Dark Mode
 const body = document.querySelector("body");
@@ -14,15 +15,16 @@ const logo = document.querySelector("#logo-search");
 let toggleDarkmode = document.cookie ? getCookies("viewmode") : "light";
 
 darkmode();
-
-btn_darkmode.addEventListener("click", () => {
-  darkmode();
-  if (toggleDarkmode === "light") {
-    document.cookie = "viewmode=dark";
-  } else {
-    document.cookie = "viewmode=light";
-  }
-});
+if (btn_darkmode) {
+  btn_darkmode.addEventListener("click", () => {
+    darkmode();
+    if (toggleDarkmode === "light") {
+      document.cookie = "viewmode=dark";
+    } else {
+      document.cookie = "viewmode=light";
+    }
+  });
+}
 
 function darkmode() {
   if (toggleDarkmode === "light") {

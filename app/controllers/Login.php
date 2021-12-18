@@ -7,7 +7,7 @@ class Login extends Controller
 
     public function __construct()
     {
-        // $this->mAuth = (empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') ? false : true;
+        $this->mAuth = (empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') ? false : true;
     }
 
     public function test()

@@ -9,9 +9,9 @@ class SignUpIn
     private function login()
     {
         return "
-    <form action='" . $this->baseUrl . "/login' method='POST'>
+    <form action='" . $this->baseUrl . "/api/login' method='POST'>
     <div class='form-group mb-6'>
-        <label for='email' class='form-label inline-block mb-2 text-gray-700'>Email address</label>
+        <label for='email' class='form-label inline-block mb-2 text-gray-700'>Alamat Email</label>
         <input type='email' class='form-control
         block
         w-full
@@ -27,10 +27,10 @@ class SignUpIn
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='email' 
-        aria-describedby='email' name='email' placeholder='Enter email'>
+        aria-describedby='email' name='email' placeholder='Masukkan alamat email'>
     </div>
     <div class='form-group mb-6'>
-        <label for='password' class='form-label inline-block mb-2 text-gray-700'>Password</label>
+        <label for='password' class='form-label inline-block mb-2 text-gray-700'>Kata Sandi</label>
         <input type='password' class='form-control block
         w-full
         px-3
@@ -45,21 +45,23 @@ class SignUpIn
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='password' 
-        placeholder='Password' name='password'>
+        placeholder='Masukkan kata sandi' name='password'>
     </div>
     <div class='flex justify-between items-center mb-6'>
         <div class='form-group form-check'>
             <input type='checkbox' class='form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer' id='exampleCheck2'>
-            <label class='form-check-label inline-block text-gray-800' for='exampleCheck2'>Remember me</label>
+            <label class='form-check-label inline-block text-gray-800' for='exampleCheck2'>Ingat saya</label>
         </div>
-        <a href='#!' class='ml-5 text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out'>Forgot
-            password?</a>
+        <a href='#!' class='ml-5 text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out'>Lupa kata sandi?</a>
     </div>
     <button type='submit' class='
       w-full
       px-6
       py-2.5
-      bg-blue-600
+      bg-emerald-600
+      hover:bg-emerald-700 hover:shadow-lg
+      focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-emerald-800 active:shadow-lg
       text-white
       font-medium
       text-xs
@@ -67,19 +69,15 @@ class SignUpIn
       uppercase
       rounded
       shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
       transition
       duration-150
-      ease-in-out'>Sign in</button>
+      ease-in-out'>Masuk</button>
     </p>
 </form>";
     }
     private function register()
     {
         return "
-    
     <form>
     <div id='progress' class='grid grid-cols-2 gap-4 m-auto mb-6'>
         <div class='border-t-4 border-emerald-400 pt-4'>
@@ -218,6 +216,9 @@ class SignUpIn
       px-6
       py-2.5
       bg-emerald-600
+      hover:bg-emerald-700 hover:shadow-lg
+      focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-emerald-800 active:shadow-lg
       text-white
       font-medium
       text-xs
@@ -225,9 +226,6 @@ class SignUpIn
       uppercase
       rounded
       shadow-md
-      hover:bg-emerald-700 hover:shadow-lg
-      focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-emerald-800 active:shadow-lg
       transition
       duration-150
       ease-in-out'>Daftar</button>
@@ -253,7 +251,7 @@ class SignUpIn
                 break;
 
             default:
-                return $this->register;
+                return $this->register();
                 break;
         }
     }
