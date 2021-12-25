@@ -1,9 +1,10 @@
 // Menu Mobile
-const btn = document.querySelector("button.mobile-menu-button");
-const menu = document.querySelector(".mobile-menu");
-if (btn) {
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
+const toggle_mobile_menu = document.querySelector("button.mobile-menu-button");
+const mobile_menu = document.querySelector(".mobile-menu");
+
+if (toggle_mobile_menu) {
+  toggle_mobile_menu.addEventListener("click", () => {
+    mobile_menu.classList.toggle("hidden");
   });
 }
 
@@ -12,7 +13,7 @@ const body = document.querySelector("body");
 const btn_darkmode = document.querySelector("#btn_darkmode");
 const item_darkmode = document.querySelector("#item_darkmode");
 const logo = document.querySelector("#logo-search");
-let toggleDarkmode = document.cookie ? getCookies("viewmode") : "light";
+let toggleDarkmode = getCookies("viewmode") ? getCookies("viewmode") : "light";
 
 darkmode();
 if (btn_darkmode) {
@@ -57,13 +58,20 @@ if (btn_account) {
 }
 
 // Cookies
-function getCookies(name) {
-  let formatedName = name + "=";
-  let value = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith(formatedName))
-    .split("=")[1];
-  return value;
+function getCookies(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 // Modal Setting

@@ -3,11 +3,13 @@ session_start();
 
 class AuthMiddleware extends Controller
 {
-    private $mAuth = true;
+    private $mAuth = false;
+    private $mUser;
 
     public function __construct()
     {
         $this->mAuth = (empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') ? false : true;
+        $this->mUser = (empty($_SESSION["user"])) ? NULL : $_SESSION["user"];
     }
 
     public function isLogin()
@@ -17,10 +19,33 @@ class AuthMiddleware extends Controller
 
     public function needAuth()
     {
-        if (!$this->mAuth) {
+        if (!$this->mUser) {
             header('Location: ' . $this->absUrl() . '/auth/login');
             die();
         }
+    }
+
+    public function isAdmin()
+    {
+        if (isset($this->mUser)) {
+            if ($this->mUser['role'] != 'baas') {
+                header('Location: ' . $this->absUrl() . '/Page/forbidden');
+                die();
+            } else {
+                return true;
+            }
+        } else {
+            header('Location: ' . $this->absUrl() . '/auth/login');
+            die();
+        }
+    }
+    public function logout()
+    {
+        $_SESSION["authenticated"] = 'false';
+        $_SESSION["user"] = NULL;
+        $this->mUser = NULL;
+        header('Location: ' . $this->absUrl() . '/auth/login');
+        die();
     }
 
     public function login(String $email, String $password)
@@ -38,6 +63,7 @@ class AuthMiddleware extends Controller
                     if ($user) {
                         $_SESSION["authenticated"] = 'true';
                         $_SESSION["user"] = $user;
+                        $this->mUser = $user;
                         header('Location: ' . $this->absUrl() . '/');
                         die();
                     } else {

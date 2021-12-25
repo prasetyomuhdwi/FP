@@ -29,9 +29,8 @@ class Auth extends Controller
 
     public function logout()
     {
-        session_destroy();
-        header('Location: ' . $this->absUrl() . '/auth/login');
-        die();
+        $middleware = new AuthMiddleware;
+        $middleware->logout();
     }
 
     public function register()

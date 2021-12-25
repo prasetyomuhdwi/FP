@@ -1,10 +1,10 @@
-CREATE DATABASE `pwl_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+DROP DATABASE IF EXISTS `db_pwl`;
+CREATE DATABASE `db_pwl` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
-
 
 DROP TABLE IF EXISTS `bookmarks`;
 DROP TABLE IF EXISTS `likes`;
@@ -34,14 +34,14 @@ CREATE TABLE `users` (
   `avatar_path` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` time DEFAULT NULL,
+  `deleted_at` timestamp DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `blogs` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `tags_id` bigint(20) NOT NULL,
+  `tags_id` varchar(255) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `title` varchar(255) NOT NULL,
   `poster_path` text DEFAULT NULL,
@@ -49,11 +49,9 @@ CREATE TABLE `blogs` (
   `summary` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` time DEFAULT NULL,
+  `deleted_at` timestamp DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `tags_id` (`tags_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`),
   CONSTRAINT `blogs_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -64,7 +62,6 @@ CREATE TABLE `bookmarks` (
   `user_id` bigint(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` time DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `blog_id` (`blog_id`),
   KEY `user_id` (`user_id`),
@@ -102,7 +99,8 @@ CREATE TABLE `likes` (
   CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`role`,`created_at`) VALUES ('admin','admin fp pwl','admin@mail.com','adminFP123','saya adalah admin yang bertugas untuk mengawasi dan mengatur website','baas',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`role`,`created_at`) VALUES ('admin','admin fp pwl','admin@mail.com',MD5('adminFP123'),'saya adalah admin yang bertugas untuk mengawasi dan mengatur website','baas',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`created_at`) VALUES ('user','user fp pwl','user@mail.com',MD5('userFP123'),'saya adalah user website',CURRENT_TIMESTAMP);
 
 INSERT INTO `tags` (`name`,`created_at`) VALUES ('Tanaman Hias',CURRENT_TIMESTAMP);
 INSERT INTO `tags` (`name`,`created_at`) VALUES ('Tanaman Obat',CURRENT_TIMESTAMP);

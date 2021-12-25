@@ -16,7 +16,7 @@ class PageComp
         $active_page = $this->currentUrl;
         // Navbar
         echo "
-        <nav id='header' class='w-full bg-white dark:bg-gray-800 shadow-lg transition duration-300'>
+        <nav id='header' class='w-full bg-gray-50 dark:bg-gray-800 shadow-md transition duration-300'>
             <div id='progress' class='h-1 z-20 top-0' style='background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);'></div>
             <div class='max-w-6xl mx-auto px-4'>
                 <div class='flex justify-between items-center'>

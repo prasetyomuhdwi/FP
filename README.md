@@ -30,6 +30,9 @@
 - v2.0.1.1
   - ubah cara init class di `app/init.php` menggunakan `spl_autoload_register($className)`
   - Menambahkan Fungsi Login
+  - Menambahkan Fungsi Logout
+  - Mengubah file `model/database.sql`
+  - Menambahkan side nav `view/baas/index.php`
 
 ## Instalasi app
 
