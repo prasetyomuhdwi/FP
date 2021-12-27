@@ -1,13 +1,13 @@
 <div class="min-h-screen bg-emerald-500 grid grid-cols-2">
     <div class="w-full h-full bg-auth"></div>
-    <div class="p-10 xs:p-0 md:w-full md:max-w-2xl">
+    <div class="p-10 grid gap-2 justify-center xs:p-0 md:w-full md:max-w-2xl">
         <div class="flex justify-center items-center p-4 pb-8">
             <a href="<?= $data['baseUrl'] ?>/">
                 <img src="<?= $data['baseUrl'] ?>/assets/image/logo-alt.png" class="w-64" alt="logo">
             </a>
         </div>
-        <div class="w-full flex justify-center">
-            <div class="flex flex-col p-6 rounded-lg shadow-lg bg-white lg:w-max max-w-2xl">
+        <div class="w-full">
+            <div class="flex flex-col p-6 rounded-lg shadow-lg bg-white">
                 <?= $data['component'] ?>
             </div>
         </div>

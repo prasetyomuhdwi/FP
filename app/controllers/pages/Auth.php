@@ -1,7 +1,6 @@
 <?php
 class Auth extends Controller
 {
-    // GET
     public function login()
     {
         $sign = new SignUpIn($this->absUrl());
@@ -27,12 +26,6 @@ class Auth extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
-    public function logout()
-    {
-        $middleware = new AuthMiddleware;
-        $middleware->logout();
-    }
-
     public function register()
     {
         $sign = new SignUpIn($this->absUrl());
@@ -48,7 +41,12 @@ class Auth extends Controller
                 background-repeat: no-repeat;
             }
         </style>";
-        $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
+
+        $dataComp['script'] = "
+        <script src='" . $this->absUrl() . "/assets/js/main.js'></script>
+        <script src='" . $this->absUrl() . "/assets/js/register.js'></script>
+        ";
+
         $dataComp['title'] = "Daftar";
         $dataComp['useNav'] = false;
 
@@ -59,7 +57,12 @@ class Auth extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
-    // POST
+    public function logout()
+    {
+        $middleware = new AuthMiddleware;
+        $middleware->logout();
+    }
+
     public function signin()
     {
         $middleware = new AuthMiddleware;
@@ -71,12 +74,21 @@ class Auth extends Controller
         $middleware->login($email, $password);
     }
 
-    public function dataCleaner($data)
+    public function signup()
     {
-        $data = trim($data);
-        $data = htmlspecialchars($data);
-        $data = strip_tags($data);
-        $data = stripslashes($data);
-        return $data;
+        $middleware = new AuthMiddleware;
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+        $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+        $fullname = filter_var($_POST['fullname'], FILTER_SANITIZE_STRING);
+        $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
+
+        $email = $this->dataCleaner($email);
+        $bio = $this->dataCleaner($bio);
+        $username = $this->dataCleaner($username);
+        $fullname = $this->dataCleaner($fullname);
+        $password = $this->dataCleaner($password);
+
+        $middleware->register($username, $fullname, $email, $password, $bio);
     }
 }

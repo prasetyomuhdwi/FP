@@ -22,6 +22,15 @@ class Controller
         return $this->config()['app_root'];
     }
 
+    public function dataCleaner($data)
+    {
+        $data = trim($data);
+        $data = htmlspecialchars($data);
+        $data = strip_tags($data);
+        $data = stripslashes($data);
+        return $data;
+    }
+
     public function dbInfo()
     {
         return [
