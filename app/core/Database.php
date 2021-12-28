@@ -90,8 +90,8 @@ class Database extends Controller
         return $this->stmt->rowCount();
     }
 
-    
-     // example use
+
+    // example use
     // Database::table($this->table)
     // ->select('name, password, email')
     // -> where(["name = 'chandra'", "laptop != 'mackbook'"])
@@ -114,8 +114,8 @@ class Database extends Controller
     // example params ["name = 'chandra'", "laptop != 'mackbook'"]
     public function where($q)
     {
-       $this->condition_statement = array_merge($this->condition_statement, $q);
-       return $this;
+        $this->condition_statement = array_merge($this->condition_statement, $q);
+        return $this;
     }
 
     public function group(String $q)
@@ -134,25 +134,25 @@ class Database extends Controller
         $this->offset_statement = $i;
     }
 
-    public function buildSelectQuery() 
+    public function buildSelectQuery()
     {
 
         // throw new Exception('Division by zero.');
         $statement = "select ";
-        
+
         if ($this->select_statement == "") {
             $statement = $statement . "*";
-        }else{
+        } else {
             $statement = $statement . $this->select_statement;
         }
 
         if (!isset($this->table)) {
-           throw new Exception('table name required');
-        }else{
+            throw new Exception('table name required');
+        } else {
             $statement = $statement . " from " . $this->table;
         }
 
-        if (count($this->condition_statement) > 0 ){
+        if (count($this->condition_statement) > 0) {
             $statement = $statement . " where ";
 
             foreach ($this->condition_statement as $index => $condition) {
@@ -160,7 +160,7 @@ class Database extends Controller
                     $statement = $statement . $condition;
                     continue;
                 }
-                $statement = $statement. " and " . $condition;
+                $statement = $statement . " and " . $condition;
             }
         }
 
@@ -175,18 +175,17 @@ class Database extends Controller
         $this->stmt = $this->dbh->prepare($statement);
 
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->stmt;
     }
 
     public function find()
     {
-        return $this->buildSelectQuery();
+        return $this->buildSelectQuery()->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function first()
     {
-        $this->limit_statement = 1;
 
-        return $this->buildSelectQuery();
+        return $this->buildSelectQuery()->fetch(PDO::FETCH_ASSOC);
     }
 }

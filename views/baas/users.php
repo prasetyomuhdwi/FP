@@ -15,16 +15,7 @@
 
             <div class="flex flex-col justify-between flex-1 mt-8">
                 <nav class="grid grid-flow-row auto-row-auto gap-2">
-                    <a class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" href="<?= $data['baseUrl'] ?>/baas">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-
-                        <span class="mx-4 font-medium">Dashboard</span>
-                    </a>
-
-                    <a class="
-                    flex
+                    <a class="flex
                     items-center
                     px-4
                     py-2
@@ -36,7 +27,19 @@
                     dark:text-gray-400
                     hover:bg-gray-200
                     dark:hover:bg-gray-700 dark:hover:text-gray-200
-                    hover:text-gray-700" href="<?= $data['baseUrl'] ?>/baas/users">
+                    hover:text-gray-700" href="<?= $data['baseUrl'] ?>/baas">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span class="mx-4 font-medium">Dashboard</span>
+                    </a>
+
+                    <a class="
+                        flex items-center px-4 py-2 
+                        text-gray-700 bg-gray-200 
+                        rounded-md dark:bg-gray-700 
+                        dark:text-gray-200" href="<?= $data['baseUrl'] ?>/baas/users">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
                             <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -215,103 +218,144 @@
         </div>
     </div>
     <div class="py-3 pl-8 sm:p-5 text-white w-full grid auto-row-auto gap-1">
-        <div class="grid grid-cols-4 col-auto gap-2 mb-4">
-            <div class="p-4 shadow-lg bg-gray-800 rounded-md grid items-center">
-                <div class="flex flex-col justify-around items-center w-full p-2 rounded-lg">
-                    <h2 class="text-5xl font-medium text-gray-50"><?= $data['count']['user'] ?></h2>
-                    <p class="text-gray-300 text-xl">Users</p>
-                </div>
-            </div>
-            <div class="p-4 shadow-lg bg-gray-800 rounded-md grid items-center">
-                <div class="flex flex-col justify-around items-center w-full p-2 rounded-lg">
-                    <h2 class="text-5xl font-medium text-gray-50"><?= $data['count']['blog'] ?></h2>
-                    <p class="text-gray-300 text-xl">Blogs</p>
-                </div>
-            </div>
-            <div class="p-4 shadow-lg bg-gray-800 rounded-md grid items-center">
-                <div class="flex flex-col justify-around items-center w-full p-2 rounded-lg">
-                    <h2 class="text-5xl font-medium text-gray-50"><?= $data['count']['tag'] ?></h2>
-                    <p class="text-gray-300 text-xl">Tags</p>
-                </div>
-            </div>
-            <div class="p-4 shadow-lg bg-gray-800 rounded-md grid items-center">
-                <div class="flex flex-col justify-around items-center w-full p-2 rounded-lg">
-                    <h2 class="text-5xl font-medium text-gray-50"><?= $data['count']['like'] ?></h2>
-                    <p class="text-gray-300 text-xl">Likes</p>
-                </div>
-            </div>
-            <div class="p-4 shadow-lg bg-gray-800 rounded-md grid items-center">
-                <div class="flex flex-col justify-around items-center w-full p-2 rounded-lg">
-                    <h2 class="text-5xl font-medium text-gray-50"><?= $data['count']['bookmark'] ?></h2>
-                    <p class="text-gray-300 text-xl">Bookmarks</p>
-                </div>
-            </div>
-            <div class="p-4 shadow-lg bg-gray-800 rounded-md grid items-center">
-                <div class="flex flex-col justify-around items-center w-full p-2 rounded-lg">
-                    <h2 class="text-5xl font-medium text-gray-50"><?= $data['count']['comment'] ?></h2>
-                    <p class="text-gray-300 text-xl">Comments</p>
-                </div>
-            </div>
-        </div>
 
         <div class="w-full flex flex-col mt-2">
-            <h2 class="text-gray-700 font-bold text-xl">Top 5 Blogs Favorite</h2>
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="flex justify-start items-center">
+                <button id="btn-add-likes" class="w-1/3 text-white p-4 px-6 bg-sky-900 hover:bg-sky-700 focus:bg-sky-600 rounded-lg">
+                    Add User
+                </button>
+            </div>
+            <div class="w-1/2 sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
-                        <table class="min-w-full">
-                            <thead class="bg-red-900 text-white border-b">
-                                <tr>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Blog Id
+                        <table>
+                            <thead>
+                                <tr class="bg-gray-800 text-white border-b">
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            id
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
                                     </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Title
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            username
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
                                     </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        User Id
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            fullname
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
                                     </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Tags Id
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            email
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            password
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            bio
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            role
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            avatar_path
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            created_at
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            updated_at
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="p-2 border-r cursor-pointer text-sm font-thin">
+                                        <div class="flex items-center justify-center">
+                                            Action
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                            </svg>
+                                        </div>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Mark
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Otto
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @mdo
-                                    </td>
+                                    <?php
+                                    for ($i = 0; $i < 11; $i++) {
+                                        echo "
+                                        <td class='p-2'>
+                                            <input type='text' class='border p-1'>
+                                        </td>";
+                                    }
+                                    ?>
                                 </tr>
                                 <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Jacob
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Thornton
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @fat
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Larry
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Wild
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @twitter
-                                    </td>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($data['allUsers'] as $key => $value) {
+                                        echo "
+                                            <tr class='bg-gray-100 text-center border-b text-sm text-gray-600 min-h-64'>
+                                                <td class='p-2 border-r'>" . $value['id'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['username'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['fullname'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['email'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['password'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['bio'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['role'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['avatar_path'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['created_at'] . "</td>
+                                                <td class='p-2 border-r'>" . $value['updated_at'] . "</td>
+                                                <td class='p-2'>
+                                                    <a href='./api/edit/user/' class='text-white p-2 px-6 bg-sky-900 hover:bg-sky-700 focus:bg-sky-600 rounded-lg'>Edit</a>
+                                                    <a href='./api/delete/user/" . $value["id"] . "' class=' text-white p-2 px-6 bg-red-900 hover:bg-red-700 focus:bg-red-600 rounded-lg'>Delete</a>
+                                                </td>
+                                            </tr>";
+                                        $i++;
+                                    }
+                                    ?>
                                 </tr>
                             </tbody>
                         </table>
@@ -319,139 +363,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="w-full flex flex-col mt-2">
-            <h2 class="text-gray-700 font-bold text-xl">Top 5 Blogs Popular</h2>
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                        <table class="min-w-full">
-                            <thead class="bg-sky-900 text-white border-b">
-                                <tr>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Blog Id
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Title
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        User Id
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Tags Id
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Mark
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Otto
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @mdo
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Jacob
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Thornton
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @fat
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Larry
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Wild
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @twitter
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full flex flex-col mt-2">
-            <h2 class="text-gray-700 font-bold text-xl">Top 5 Blogs Latest</h2>
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                        <table class="min-w-full">
-                            <thead class="bg-emerald-900 text-white border-b">
-                                <tr>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Blog Id
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Title
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        User Id
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                        Tags Id
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Mark
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Otto
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @mdo
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Jacob
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Thornton
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @fat
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Larry
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Wild
-                                    </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @twitter
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <div id='modal_setting' class='hidden fixed inset-0 z-50 bg-gray-600 bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75 flex items-center justify-center p-3'>

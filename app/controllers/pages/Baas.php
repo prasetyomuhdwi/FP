@@ -26,6 +26,21 @@ class Baas extends Controller
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
+        $mUser = new UsersMiddleware;
+        $mTag = new TagsMiddleware;
+        $mBlog = new BlogsMiddleware;
+        $mBookmark = new BookmarksMiddleware;
+        $mLike = new LikesMiddleware;
+        $mComment = new CommentsMiddleware;
+
+        $data['count'] = array(
+            'user' => $mUser->getCountUsers()['count'],
+            'blog' => $mBlog->getCountBlogs()['count'],
+            'tag' => $mTag->getCountTags()['count'],
+            'bookmark' => $mBookmark->getCountBookmarks()['count'],
+            'like' => $mLike->getCountLikes()['count'],
+            'comment' => $mComment->getCountComments()['count'],
+        );
 
         $this->view('templates/header', $dataComp);
         $this->view('baas/index', $data);
@@ -47,8 +62,11 @@ class Baas extends Controller
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
+        $mUser = new UsersMiddleware;
+        $data['allUsers'] = $mUser->getAllUsers();
+
         $this->view('templates/header', $dataComp);
-        $this->view('baas/index', $data);
+        $this->view('baas/users', $data);
         $this->view('templates/footer', $dataComp);
     }
 

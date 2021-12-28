@@ -11,16 +11,16 @@ class UsersModel
 
     public function getAllUsers()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
-        return $this->db->resultSet();
+        return $this->db->table($this->table)->select("*")->find();
     }
 
     public function getUserByEmailAndPassword(String $email, String $password)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email=:email AND password=MD5(:password)');
-        $this->db->bind('email', $email);
-        $this->db->bind('password', $password);
-        return $this->db->single();
+        return $this->db->table($this->table)->select("*")->where(["email='" . $email . "'", "password=MD5('" . $password . "')"])->first();
+        // $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email=:email AND password=MD5(:password)');
+        // $this->db->bind('email', $email);
+        // $this->db->bind('password', $password);
+        // return $this->db->single();
     }
 
     public function getListUsers()
@@ -102,7 +102,8 @@ class UsersModel
 
     public function countUsers()
     {
-        $this->db->query('SELECT COUNT(`id`) AS `count` FROM ' . $this->table . ' WHERE `deleted_at` IS NULL');
-        return $this->db->single();
+        return $this->db->table($this->table)->select("COUNT(`id`) AS `count`")->where(["`deleted_at` IS NULL"])->first();
+        // $this->db->query('SELECT COUNT(`id`) AS `count` FROM ' . $this->table . ' WHERE `deleted_at` IS NULL');
+        // return $this->db->single();
     }
 }

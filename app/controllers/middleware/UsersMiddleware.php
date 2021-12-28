@@ -10,40 +10,14 @@ class UsersMiddleware extends Controller
         $this->model = new UsersModel;
     }
 
-    public function getAllUsers()
-    {
-        // $username = $this->dataCleaner($_POST['username']);
-        // $fullname = $this->dataCleaner($_POST['fullname']);
-        // $email = $this->dataCleaner($_POST['email']);
-        // $password = $this->dataCleaner($_POST['password']);
-        // $bio = $this->dataCleaner($_POST['bio']);
-
-        // $result = $this->model->inputUser($username, $fullname, $email, $password, $bio);
-        // if ($result > 0) {
-        //     header("location: " . $this->absUrl());
-        //     die();
-        // } else {
-        //     header("location: " . $this->absUrl() . "/auth/register");
-        //     die();
-        // }
-    }
-
     public function getCountUsers()
     {
-        // $username = $this->dataCleaner($_POST['username']);
-        // $fullname = $this->dataCleaner($_POST['fullname']);
-        // $email = $this->dataCleaner($_POST['email']);
-        // $password = $this->dataCleaner($_POST['password']);
-        // $bio = $this->dataCleaner($_POST['bio']);
+        return $this->model->countUsers();
+    }
 
-        // $result = $this->model->inputUser($username, $fullname, $email, $password, $bio);
-        // if ($result > 0) {
-        //     header("location: " . $this->absUrl());
-        //     die();
-        // } else {
-        //     header("location: " . $this->absUrl() . "/auth/register");
-        //     die();
-        // }
+    public function getAllUsers()
+    {
+        return $this->model->getAllUsers();
     }
 
     public function getListAllUsers()
