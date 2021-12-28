@@ -59,9 +59,22 @@ class Blogs extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    public function createBlog($keyword)
+    {
+        $dataComp['baseUrl'] = $this->absUrl();
+        $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
+        $dataComp['title'] = "Mencari " . $keyword;
+        $dataComp['useNav'] = true;
+
+        $dataComp['pageComp'] = new PageComp(['blog', 'tags'], $this->absUrl());
+
+        $this->view('templates/header', $dataComp);
+        $this->view('blogs/list');
+        $this->view('templates/footer', $dataComp);
+    }
+
     public function blog($id)
     {
-        var_dump($id);
         if (isset($id)) {
             $dataComp['baseUrl'] = $this->absUrl();
             $dataComp['script'] = "

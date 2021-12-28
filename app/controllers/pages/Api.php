@@ -17,6 +17,9 @@ class Api extends Controller
 
     public function insert($table)
     {
-        echo $table;
+        if ($table == 'blog') {
+            $mBlog = new BlogsMiddleware;
+            $mBlog->insert();
+        }
     }
 }

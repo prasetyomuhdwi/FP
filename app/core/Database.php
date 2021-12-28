@@ -140,9 +140,9 @@ class Database extends Controller
             array_push($table, $key);
             if ($value == "CURRENT_TIMESTAMP") {
                 array_push($table_bind, $key);
-            } else if ($key == "password"){
+            } else if ($key == "password") {
                 $count++;
-                array_push($table_bind, "MD5(:" . $key.")");
+                array_push($table_bind, "MD5(:" . $key . ")");
             } else {
                 $count++;
                 array_push($table_bind, ":" . $key);
@@ -154,7 +154,7 @@ class Database extends Controller
         $this->stmt = $this->dbh->prepare($statement);
 
         for ($i = 0; $i < $count; $i++) {
-            $this->bind($table[$i], $value[$i]);
+            $this->bind($table[$i], $values[$i]);
         }
 
         $this->execute();
