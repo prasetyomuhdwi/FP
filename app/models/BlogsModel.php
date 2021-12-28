@@ -45,15 +45,23 @@ class BlogsModel
 
     public function insertBlog(String $tags_id, int $user_id, String $title, $content, $summary)
     {
-        $this->db->query('INSERT INTO `' . $this->table . '` (`tags_id`, `user_id`, `title`, `content`, `summary`, `created_at`) 
-        VALUES (:tags_id,:user_id,:title,:content,:summary, CURRENT_TIMESTAMP)');
-        $this->db->bind('tags_id', $tags_id);
-        $this->db->bind('user_id', $user_id);
-        $this->db->bind('title', $title);
-        $this->db->bind('content', $content);
-        $this->db->bind('summary', $summary);
+        // $this->db->query('INSERT INTO `' . $this->table . '` (`tags_id`, `user_id`, `title`, `content`, `summary`, `created_at`) VALUES (:tags_id,:user_id,:title,:content,:summary, CURRENT_TIMESTAMP)');
+        // $this->db->bind('tags_id', $tags_id);
+        // $this->db->bind('user_id', $user_id);
+        // $this->db->bind('title', $title);
+        // $this->db->bind('content', $content);
+        // $this->db->bind('summary', $summary);
         try {
-            $this->db->execute();
+
+            $this->db->table($this->table)->insert([
+                "tags_id"   => $tags_id,
+                "user_id"   => $user_id,
+                "title"     => $title,
+                "content"   => $content,
+                "summary"   => $summary,
+                "created_at" => "CURRENT_TIMESTAMP"
+            ]);
+
             return $this->db->rowCount();
         } catch (PDOException $e) {
             return 0;

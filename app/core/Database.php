@@ -68,11 +68,6 @@ class Database extends Controller
         $this->stmt->bindValue($param, $value, $type);
     }
 
-    public function execute()
-    {
-        $this->stmt->execute();
-    }
-
     public function resultSet() // untuk data yang banyak
     {
         $this->execute();
@@ -91,7 +86,7 @@ class Database extends Controller
     }
 
 
-    // example use
+    // example use select
     // Database::table($this->table)
     // ->select('name, password, email')
     // -> where(["name = 'chandra'", "laptop != 'mackbook'"])
@@ -99,10 +94,67 @@ class Database extends Controller
     // -> offset(2)
     // -> find();
 
+    // example use insert
+    // Database::table($this->table)
+    // -> insert([
+    //     "name"=>"chandra",
+    //     "laptop"=>"thinkpad"
+    // ])
+
+    // example update
+    // Database::table($this->table)
+    // -> where("id = id")
+    // -> update([
+    //     "name"=>"chandra",
+    //     "laptop"=>"laptop"
+    // ])
+
+    // example soft delete
+    // Database::table($this->table)
+    // -> where("id = id")
+    // -> softDelete();
+
+    // example hard delete
+    // Database::table($this->table)
+    // -> where("id = id")
+    // -> delete();
+
     public function table(String $q)
     {
         $this->table = $q;
         return $this;
+    }
+
+    public function insert($q)
+    {
+        if (!isset($this->table)) {
+            throw new Exception('table name required');
+        }
+
+        $values = [];
+        $table = [];
+        $table_bind = [];
+        $count = 0;
+
+        foreach ($q as $key => $value) {
+            array_push($table, $key);
+            if ($value == "CURRENT_TIMESTAMP") {
+                array_push($table_bind, $key);
+            } else {
+                $count++;
+                array_push($table_bind, ":" . $key);
+            }
+            array_push($values, $value);
+        }
+
+        $statement = "insert into " . $this->table . " ( " . join(",", $table) . " ) values (" . join(",", $table_bind) . ")";
+        $this->stmt = $this->dbh->prepare($statement);
+
+        for ($i = 0; $i < $count; $i++) {
+            $this->bind($table[$i], $value[$i]);
+        }
+
+        $this->execute();
     }
 
     public function select(String $q)
@@ -111,7 +163,7 @@ class Database extends Controller
         return $this;
     }
 
-    // example params ["name = 'chandra'", "laptop != 'mackbook'"]
+    // example params ["name =" => 'chandra'], ["laptop = " => 'mackbook']]
     public function where($q)
     {
         $this->condition_statement = array_merge($this->condition_statement, $q);
@@ -178,6 +230,11 @@ class Database extends Controller
         return $this->stmt;
     }
 
+    public function execute()
+    {
+        $this->stmt->execute();
+    }
+
     public function find()
     {
         return $this->buildSelectQuery()->fetchAll(PDO::FETCH_ASSOC);
@@ -185,7 +242,6 @@ class Database extends Controller
 
     public function first()
     {
-
         return $this->buildSelectQuery()->fetch(PDO::FETCH_ASSOC);
     }
 }
