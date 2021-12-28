@@ -4,6 +4,11 @@ class Database extends Controller
     private $dbh; // database handler
     private $stmt; // Statement
     private $dsn; // Data Source Name
+    private $select_statement;
+    private $condition_statement = [];
+    private $limit_statement;
+    private $offset_statement;
+    private $group_by_statement;
 
     private $db_type;
     private $db_host;
@@ -82,5 +87,90 @@ class Database extends Controller
     public function rowCount() // untuk menghitung data yang masuk
     {
         return $this->stmt->rowCount();
+    }
+
+    public function select(String $q)
+    {
+        $this->select_statement = $this->select_statement . $q;
+        return $this;
+    }
+
+    // Database::select('name, password, email')->
+        // where(["name = 'chandra'", "laptop != 'mackbook'"])->
+        // limit(10)->
+        // offset(2)->
+        // find();
+
+    // example params ["name = 'chandra'", "laptop != 'mackbook'"]
+    public function where($q)
+    {
+       $this->condition_statement = array_merge($this->condition_statement, $q);
+       return $this;
+    }
+
+    public function group(String $q)
+    {
+        $this->group_by_statement = $this->group_by_statement . $q;
+        return $this;
+    }
+
+    public function limit(Int $i)
+    {
+        $this->limit_statement = $i;
+    }
+
+    public function offset(Int $i)
+    {
+        $this->offset_statement = $i;
+    }
+
+    public function buildSelectQuery() 
+    {
+
+        // throw new Exception('Division by zero.');
+        $statement = "select ";
+        
+        if ($this->select_statement == "") {
+            $statement = $statement . "*";
+        }else{
+            $statement = $statement . $this->select_statement;
+        }
+
+        if (count($this->condition_statement) > 0 ){
+            $statement = $statement . " where ";
+
+            foreach ($this->condition_statement as $index => $condition) {
+                if ($index == 0) {
+                    $statement = $statement . $condition;
+                    continue;
+                }
+                $statement = $statement. " and " . $condition;
+            }
+        }
+
+        if (isset($this->limit_statement)) {
+            $statement = $statement . " limit " . $this->limit_statement;
+        }
+
+        if (isset($this->offset_statement)) {
+            $statement = $statement . " offset " . $this->offset_statement;
+        }
+
+        $this->stmt = $this->dbh->prepare($statement);
+
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function find()
+    {
+        return $this->buildSelectQuery();
+    }
+
+    public function first()
+    {
+        $this->limit_statement = 1;
+
+        return $this->buildSelectQuery();
     }
 }
