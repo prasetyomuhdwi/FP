@@ -140,6 +140,9 @@ class Database extends Controller
             array_push($table, $key);
             if ($value == "CURRENT_TIMESTAMP") {
                 array_push($table_bind, $key);
+            } else if ($key == "password"){
+                $count++;
+                array_push($table_bind, "MD5(:" . $key.")");
             } else {
                 $count++;
                 array_push($table_bind, ":" . $key);
