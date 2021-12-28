@@ -9,6 +9,7 @@ class Database extends Controller
     private $limit_statement;
     private $offset_statement;
     private $group_by_statement;
+    private $table;
 
     private $db_type;
     private $db_host;
@@ -89,17 +90,26 @@ class Database extends Controller
         return $this->stmt->rowCount();
     }
 
+    
+     // example use
+    // Database::table($this->table)
+    // ->select('name, password, email')
+    // -> where(["name = 'chandra'", "laptop != 'mackbook'"])
+    // -> limit(10)
+    // -> offset(2)
+    // -> find();
+
+    public function table(String $q)
+    {
+        $this->table = $q;
+        return $this;
+    }
+
     public function select(String $q)
     {
         $this->select_statement = $this->select_statement . $q;
         return $this;
     }
-
-    // Database::select('name, password, email')->
-        // where(["name = 'chandra'", "laptop != 'mackbook'"])->
-        // limit(10)->
-        // offset(2)->
-        // find();
 
     // example params ["name = 'chandra'", "laptop != 'mackbook'"]
     public function where($q)
@@ -134,6 +144,12 @@ class Database extends Controller
             $statement = $statement . "*";
         }else{
             $statement = $statement . $this->select_statement;
+        }
+
+        if (!isset($this->table)) {
+           throw new Exception('table name required');
+        }else{
+            $statement = $statement . " from " . $this->table;
         }
 
         if (count($this->condition_statement) > 0 ){
