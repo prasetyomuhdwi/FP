@@ -28,10 +28,7 @@ class AuthMiddleware extends Controller
     public function isAdmin()
     {
         if (isset($this->mUser)) {
-            if ($this->mUser['role'] != 'baas') {
-                header('Location: ' . $this->absUrl() . '/Page/forbidden');
-                die();
-            } else {
+            if ($this->mUser['role'] == 'baas') {
                 return true;
             }
         } else {

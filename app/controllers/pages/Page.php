@@ -5,6 +5,8 @@
 
 class Page extends Controller
 {
+    // untuk masuk kesini 
+    // http://localhost/.../page
     public function index()
     {
         $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
@@ -20,6 +22,8 @@ class Page extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../page/about
     public function about()
     {
         $dataComp['baseUrl'] = $this->absUrl();
@@ -35,6 +39,8 @@ class Page extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../page/notFound
     public function notFound()
     {
         $err = new ErrorsComp(404);
@@ -49,6 +55,8 @@ class Page extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../page/forbidden
     public function forbidden()
     {
         $err = new ErrorsComp(403);
@@ -63,6 +71,8 @@ class Page extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../page/internalServerError
     public function internalServerError()
     {
         $err = new ErrorsComp(500);

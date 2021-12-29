@@ -1,6 +1,8 @@
 <?php
 class Auth extends Controller
 {
+    // untuk masuk kesini 
+    // http://localhost/.../auth/login/
     public function login()
     {
         $sign = new SignUpIn($this->absUrl());
@@ -26,6 +28,8 @@ class Auth extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../auth/register/
     public function register()
     {
         $sign = new SignUpIn($this->absUrl());
@@ -57,12 +61,16 @@ class Auth extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../auth/logout/
     public function logout()
     {
         $middleware = new AuthMiddleware;
         $middleware->logout();
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../auth/signin/
     public function signin()
     {
         $middleware = new AuthMiddleware;
@@ -74,6 +82,8 @@ class Auth extends Controller
         $middleware->login($email, $password);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../auth/signuo/
     public function signup()
     {
         $middleware = new AuthMiddleware;

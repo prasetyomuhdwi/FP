@@ -3,6 +3,8 @@ session_start();
 
 class Accounts extends Controller
 {
+    // untuk masuk kesini 
+    // http://localhost/.../accounts/profile/
     public function profile()
     {
         $dataComp['baseUrl'] = $this->absUrl();
@@ -17,6 +19,8 @@ class Accounts extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../accounts/favorit/
     public function favorit()
     {
         $dataComp['baseUrl'] = $this->absUrl();
@@ -31,6 +35,8 @@ class Accounts extends Controller
         $this->view('templates/footer', $dataComp);
     }
 
+    // untuk masuk kesini 
+    // http://localhost/.../accounts/bookmark/
     public function bookmark()
     {
         $dataComp['baseUrl'] = $this->absUrl();
