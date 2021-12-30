@@ -13,8 +13,8 @@ class BlogsModel
     {
         if ($tagsName) {
             return $this->db->table($this->table)
-                ->select("GROUP_CONCAT(tags.name) FROM tags WHERE instr(concat(' ,',blogs.tags_id,','),concat(',',tags.id,',')) > 1 ) AS 'tags_id',
-             `user_id`,`title`,`poster_path`,`content`,`summary`,`created_at`,`updated_at`,`deleted_at`")
+                ->select("`id`,GROUP_CONCAT(tags.name) FROM tags WHERE instr(concat(' ,',blogs.tags_id,','),concat(',',tags.id,',')) > 1 ) AS `tags_id`,
+             `title`,`poster_path`,`summary`,`created_at`,`deleted_at`")
                 ->find();
             // $this->db->query("SELECT `id`,
             // (SELECT GROUP_CONCAT(tags.name) FROM tags WHERE instr(concat(' ,',blogs.tags_id,','),concat(',',tags.id,',')) > 1 ) AS 'tags_id',
@@ -23,7 +23,7 @@ class BlogsModel
         } else {
             // $this->db->query("SELECT * FROM " . $this->table);
             // $tmp = $this->db->resultSet();
-            $tmp = $this->db->table($this->table)->select("*")->find();
+            $tmp = $this->db->table($this->table)->select("`id`,`tags_id`,`title`,`poster_path`,`summary`,`created_at`,`deleted_at`")->find();
             foreach ($tmp as $key => $value) {
                 $tmp[$key]["tags_id"] = rtrim($tmp[$key]["tags_id"], ",");
             }
@@ -45,12 +45,6 @@ class BlogsModel
 
     public function insertBlog(String $tags_id, int $user_id, String $title, $content, $summary)
     {
-        // $this->db->query('INSERT INTO `' . $this->table . '` (`tags_id`, `user_id`, `title`, `content`, `summary`, `created_at`) VALUES (:tags_id,:user_id,:title,:content,:summary, CURRENT_TIMESTAMP)');
-        // $this->db->bind('tags_id', $tags_id);
-        // $this->db->bind('user_id', $user_id);
-        // $this->db->bind('title', $title);
-        // $this->db->bind('content', $content);
-        // $this->db->bind('summary', $summary);
         try {
 
             $this->db->table($this->table)->insert([

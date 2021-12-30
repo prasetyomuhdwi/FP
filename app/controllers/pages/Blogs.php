@@ -14,8 +14,12 @@ class Blogs extends Controller
 
         $dataComp['pageComp'] = new PageComp(['blog', 'all'], $this->absUrl());
 
+        $mBlogs = new BlogsMiddleware;
+        // $data["listBlogs"] = $mBlogs->getAllBlogs("all");
+        $data = "test";
+
         $this->view('templates/header', $dataComp);
-        $this->view('blogs/list');
+        $this->view('blogs/list', $data);
         $this->view('templates/footer', $dataComp);
     }
 
