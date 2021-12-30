@@ -7,7 +7,7 @@ class Accounts extends Controller
     // http://localhost/.../accounts/profile/
     public function profile()
     {
-        $dataComp['baseUrl'] = $this->absUrl();
+        $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
         $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
         $dataComp['title'] = "Profile";
         $dataComp['useNav'] = true;
@@ -15,7 +15,7 @@ class Accounts extends Controller
         $dataComp['pageComp'] = new PageComp(['profile'], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
-        $this->view('accounts/profile');
+        $this->view('accounts/profile', $data);
         $this->view('templates/footer', $dataComp);
     }
 
@@ -32,6 +32,22 @@ class Accounts extends Controller
 
         $this->view('templates/header', $dataComp);
         $this->view('accounts/favorite');
+        $this->view('templates/footer', $dataComp);
+    }
+
+    // untuk masuk kesini 
+    // http://localhost/.../accounts/edit/
+    public function edit()
+    {
+        $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
+        $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
+        $dataComp['title'] = "Edit User";
+        $dataComp['useNav'] = true;
+
+        $dataComp['pageComp'] = new PageComp(['favorit'], $this->absUrl());
+
+        $this->view('templates/header', $dataComp);
+        $this->view('accounts/edit', $data);
         $this->view('templates/footer', $dataComp);
     }
 

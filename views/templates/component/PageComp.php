@@ -23,7 +23,7 @@ class PageComp
                     <div class='flex w-full space-x-7'>
                         <div>
                             <!-- Website Logo -->
-                            <a href='" . $this->baseUrl . "/' class='flex items-end py-4 px-2'>
+                            <a href='" . $this->baseUrl . "/' class='flex items-end py-4 px-2 w-64'>
                                 <img src='" . $this->baseUrl . "/assets/image/logo.svg' alt='Logo' class='h-8 w-8 mr-2 transition duration-300'>
                                 <span class='font-semibold text-gray-500 dark:text-gray-50 text-lg'>ToPlanter</span>
                             </a>

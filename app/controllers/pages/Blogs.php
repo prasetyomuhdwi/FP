@@ -75,6 +75,7 @@ class Blogs extends Controller
     // http://localhost/.../blogs/create
     public function create()
     {
+        echo "create";
         // $dataComp['baseUrl'] = $this->absUrl();
         // $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
         // $dataComp['title'] = "Mencari " . $keyword;
