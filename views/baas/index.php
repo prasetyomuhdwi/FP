@@ -7,7 +7,7 @@
         bg-white
         border-r
         dark:bg-gray-800 dark:border-gray-600">
-        <div id="menu-baas" class="h-full hidden sm:flex flex-col justify-around">
+        <div id="menu-baas" class="h-full hidden sm:flex flex-col justify-around pr-3">
             <a class="flex items-center justify-left p-3 mb-3 text-gray-700 dark:text-white text-xl font-bold" href=" <?= $data['baseUrl'] ?>/">
                 <img class="w-12 " src="<?= $data['baseUrl'] ?>/assets/image/logo.svg" alt="logo">
                 ToPlanter

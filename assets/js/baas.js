@@ -21,3 +21,17 @@ if (menuNav) {
     }
   });
 }
+
+// Users
+const btn_users = document.getElementById("btn-add-users");
+const users_modal = document.getElementById("users_modal");
+const btn_close_users_modal = document.getElementById("btn_close_users_modal");
+
+if (btn_users) {
+  btn_users.addEventListener("click", () => {
+    users_modal.classList.remove("hidden");
+  });
+  btn_close_users_modal.addEventListener("click", () => {
+    users_modal.classList.add("hidden");
+  });
+}

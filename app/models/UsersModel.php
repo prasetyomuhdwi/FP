@@ -29,6 +29,11 @@ class UsersModel
         return $this->db->resultSet();
     }
 
+    public function getUserById($id)
+    {
+        return $this->db->table($this->table)->select("*")->where(["id='" . $id . "'"])->first();
+    }
+
     public function checkUsername($username)
     {
         $this->db->query('SELECT `username` FROM ' . $this->table . ' WHERE `username`=:username');

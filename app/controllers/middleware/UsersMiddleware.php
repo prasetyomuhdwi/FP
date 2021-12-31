@@ -20,6 +20,11 @@ class UsersMiddleware extends Controller
         return $this->model->getAllUsers();
     }
 
+    public function getUserById(int $id)
+    {
+        return $this->model->getUserById($id);
+    }
+
     public function getListAllUsers()
     {
         // $username = $this->dataCleaner($_POST['username']);
