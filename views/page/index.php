@@ -25,7 +25,7 @@
 
     <!-- Content -->
     <div class="bg-gray-50 dark:text-gray-400 dark:bg-gray-900 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-6 mx-auto">
             <h3 class="py-3 text-lg font-bold">Blog Terbaru</h3>
             <div class="flex flex-wrap -m-4">
                 <div class="p-4 md:w-1/3">
@@ -117,7 +117,7 @@
                 </div>
             </div>
         </div>
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-6 mx-auto">
             <h3 class="py-3 text-lg font-bold">Blog Terpopuler</h3>
             <div class="flex flex-wrap -m-4">
                 <div class="p-4 md:w-1/3">

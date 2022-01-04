@@ -1,6 +1,6 @@
 	<!--Container-->
-	<div class="dark:bg-gray-900">
-		<div class="container w-full md:max-w-3xl mx-auto pt-20">
+	<div class="dark:bg-gray-900 pb-3 min-h-screen">
+		<div class="container w-full md:max-w-3xl mx-auto pt-20 pb-20">
 
 			<div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
 
@@ -80,21 +80,94 @@
 			<!--Divider-->
 			<hr class="border-b-2 border-gray-400 mb-8 mx-4">
 
-			<!--Next & Prev Links-->
-			<div class="font-sans flex justify-between content-center px-4 pb-12">
-				<div class="text-left">
-					<span class="text-xs md:text-sm font-normal text-gray-600 dark:text-gray-300">&lt; Previous Post</span><br>
-					<p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog title</a></p>
+			<!--Comment-->
+			<div class="antialiased mx-auto max-w-screen-sm p-4 dark:text-white rounded-lg dark:bg-gray-800">
+				<h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Komentar</h3>
+				<div class="flex w-full rounded-lg bg-gray-300 dark:bg-gray-700 items-center justify-center shadow-lg mt-2 mb-4">
+					<form class="w-full px-4 pt-2">
+						<div class="flex flex-wrap -mx-3 mb-6">
+							<h2 class="px-4 pt-3 pb-2 text-gray-800 dark:text-gray-100 text-lg">Balas</h2>
+							<div class="w-full md:w-full px-3 mb-2 mt-2">
+								<textarea class="bg-gray-100 dark:bg-gray-700 rounded border border-gray-400 text-gray-800 dark:text-gray-100 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 dark:placeholder-gray-100 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700" name="body" placeholder='Type Your Comment' required></textarea>
+							</div>
+							<div class="w-full md:w-full flex items-start md:w-full px-3">
+								<div class="-mr-1">
+									<input type='submit' class="bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-50 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100 dark:hover:shadow-lg cursor-pointer dark:hover:bg-gray-500" value='Post Comment'>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
-				<div class="text-right">
-					<span class="text-xs md:text-sm font-normal text-gray-600  dark:text-gray-300">Next Post &gt;</span><br>
-					<p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog title</a></p>
+				<div class="space-y-4">
+
+					<div class="flex">
+						<div class="flex-shrink-0 mr-3">
+							<img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+						</div>
+						<div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+							<strong>Sarah</strong> <span class="text-xs text-gray-400 dark:text-white">3:34 PM</span>
+							<p class="text-sm mb-2">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+								sed diam nonumy eirmod tempor invidunt ut labore et dolore
+								magna aliquyam erat, sed diam voluptua.
+							</p>
+
+							<button onclick="reply(1,this)" class="btn-toggle-comment my-5 uppercase tracking-wide text-gray-400 dark:text-white font-bold text-xs">Balas</button>
+						</div>
+					</div>
+					<div class="flex">
+						<div class="flex-shrink-0 mr-3">
+							<img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+						</div>
+						<div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+							<strong>Sarah</strong> <span class="text-xs text-gray-400 dark:text-white">3:34 PM</span>
+							<p class="text-sm mb-2">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+								sed diam nonumy eirmod tempor invidunt ut labore et dolore
+								magna aliquyam erat, sed diam voluptua.
+							</p>
+
+							<button onclick="reply(2,this)" class="btn-toggle-comment my-5 uppercase tracking-wide text-gray-400 dark:text-white font-bold text-xs">Balas</button>
+
+							<div class="space-y-4 p-4 rounded-lg dark:bg-gray-700">
+								<div class="flex">
+									<div class="flex-shrink-0 mr-3">
+										<img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+									</div>
+									<div class="flex-1 border border-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+										<strong>Sarah</strong> <span class="text-xs text-gray-400 dark:text-white">3:34 PM</span>
+										<p class="text-xs sm:text-sm">
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+											sed diam nonumy eirmod tempor invidunt ut labore et dolore
+											magna aliquyam erat, sed diam voluptua.
+										</p>
+									</div>
+								</div>
+								<div class="flex">
+									<div class="flex-shrink-0 mr-3">
+										<img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+									</div>
+									<div class="flex-1 border border-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+										<strong>Sarah</strong> <span class="text-xs text-gray-400 dark:text-white">3:34 PM</span>
+										<p class="text-xs sm:text-sm">
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+											sed diam nonumy eirmod tempor invidunt ut labore et dolore
+											magna aliquyam erat, sed diam voluptua.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
-
-
-			<!--/Next & Prev Links-->
-
 		</div>
+	</div>
+
+
+	<!--/Comment-->
+
+	</div>
 	</div>
 	<!--/container-->

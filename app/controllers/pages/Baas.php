@@ -45,7 +45,12 @@ class Baas extends Controller
         );
 
         $this->view('templates/header', $dataComp);
+
+        $dataComp["tab"] = "dashboard";
+        $this->view('baas/template/header', $dataComp);
         $this->view('baas/index', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 
@@ -61,7 +66,7 @@ class Baas extends Controller
             <script src='" . $this->absUrl() . "/assets/js/baas.js'></script>
             ";
 
-        $dataComp['title'] = "Dashboard";
+        $dataComp['title'] = "Users";
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
@@ -70,7 +75,12 @@ class Baas extends Controller
         $data['allUsers'] = $mUser->getAllUsers();
 
         $this->view('templates/header', $dataComp);
+
+        $dataComp["tab"] = "users";
+        $this->view('baas/template/header', $dataComp);
         $this->view('baas/users', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 
@@ -86,13 +96,18 @@ class Baas extends Controller
             <script src='" . $this->absUrl() . "/assets/js/baas.js'></script>
             ";
 
-        $dataComp['title'] = "Dashboard";
+        $dataComp['title'] = "Tags";
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
-        $this->view('baas/index', $data);
+
+        $dataComp["tab"] = "tags";
+        $this->view('baas/template/header', $dataComp);
+        $this->view('baas/tags', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 
@@ -101,20 +116,42 @@ class Baas extends Controller
     public function blogs()
     {
         $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
-        $dataComp['css'] = "<link rel='stylesheet' href='" . $this->absUrl() . "/assets/css/style.css'>";
+        $dataComp['css'] = "
+        <link rel='stylesheet' href='" . $this->absUrl() . "/assets/css/style.css'>
+        ";
 
         $dataComp['script'] = "
+            <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy='origin'></script>
+            <script>tinymce.init({
+                selector:'textarea',
+                menubar: false,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | code',
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+            });</script>
             <script src='" . $this->absUrl() . "/assets/js/main.js'></script>
             <script src='" . $this->absUrl() . "/assets/js/baas.js'></script>
             ";
 
-        $dataComp['title'] = "Dashboard";
+        $dataComp['title'] = "Blogs";
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
-        $this->view('baas/index', $data);
+
+        $dataComp["tab"] = "blogs";
+        $this->view('baas/template/header', $dataComp);
+        $this->view('baas/blogs', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 
@@ -130,13 +167,18 @@ class Baas extends Controller
             <script src='" . $this->absUrl() . "/assets/js/baas.js'></script>
             ";
 
-        $dataComp['title'] = "Dashboard";
+        $dataComp['title'] = "Likes";
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
-        $this->view('baas/index', $data);
+
+        $dataComp["tab"] = "likes";
+        $this->view('baas/template/header', $dataComp);
+        $this->view('baas/likes', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 
@@ -152,13 +194,18 @@ class Baas extends Controller
             <script src='" . $this->absUrl() . "/assets/js/baas.js'></script>
             ";
 
-        $dataComp['title'] = "Dashboard";
+        $dataComp['title'] = "Bookmarks";
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
-        $this->view('baas/index', $data);
+
+        $dataComp["tab"] = "bookmarks";
+        $this->view('baas/template/header', $dataComp);
+        $this->view('baas/bookmarks', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 
@@ -174,13 +221,18 @@ class Baas extends Controller
             <script src='" . $this->absUrl() . "/assets/js/baas.js'></script>
             ";
 
-        $dataComp['title'] = "Dashboard";
+        $dataComp['title'] = "Comments";
         $dataComp['useNav'] = false;
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
         $this->view('templates/header', $dataComp);
-        $this->view('baas/index', $data);
+
+        $dataComp["tab"] = "comments";
+        $this->view('baas/template/header', $dataComp);
+        $this->view('baas/comments', $data);
+        $this->view('baas/template/footer', $dataComp);
+
         $this->view('templates/footer', $dataComp);
     }
 }

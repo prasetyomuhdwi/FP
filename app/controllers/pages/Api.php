@@ -11,25 +11,21 @@ class Api extends Controller
             case 'blog':
                 $mBlog = new BlogsMiddleware;
                 // $data["blog"] = $mBlog->getBlogById((int)$id);
-                $data["table"] = $table;
                 $dataComp['title'] = "Edit Blog";
                 break;
             case 'tag':
                 $mTag = new TagsMiddleware;
                 // $data["tag"] = $mTag->getTagById((int)$id);
-                $data["table"] = $table;
                 $dataComp['title'] = "Edit Tag";
                 break;
             case 'user':
                 $mUser = new UsersMiddleware;
                 $data["user"] = $mUser->getUserById((int)$id);
-                $data["table"] = $table;
                 $dataComp['title'] = "Edit User";
                 break;
             case 'comment':
                 $mComment = new CommentsMiddleware;
                 // $data["comment"] = $mComment->getCommentById((int)$id);
-                $data["table"] = $table;
                 $dataComp['title'] = "Edit Comment";
                 break;
             default:
@@ -37,6 +33,7 @@ class Api extends Controller
                 break;
         }
 
+        $data["table"] = $table;
         $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
         $dataComp['css'] = "
                 <link rel='stylesheet' href='" . $this->absUrl() . "/assets/css/style.css'>
@@ -97,6 +94,17 @@ class Api extends Controller
                 break;
             case 'user':
                 $mUser = new UsersMiddleware;
+                $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+                $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+                $fullname = filter_var($_POST['fullname'], FILTER_SANITIZE_STRING);
+                $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
+
+                $email = $this->dataCleaner($email);
+                $bio = $this->dataCleaner($bio);
+                $username = $this->dataCleaner($username);
+                $fullname = $this->dataCleaner($fullname);
+
+                $mUser->update((int) $id, $username, $fullname, $email, $bio);
                 break;
             case 'comment':
                 $mComment = new CommentsMiddleware;

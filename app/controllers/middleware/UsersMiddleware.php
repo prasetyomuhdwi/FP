@@ -43,23 +43,6 @@ class UsersMiddleware extends Controller
         // }
     }
 
-    public function insert()
-    {
-        // $username = $this->dataCleaner($_POST['username']);
-        // $fullname = $this->dataCleaner($_POST['fullname']);
-        // $email = $this->dataCleaner($_POST['email']);
-        // $password = $this->dataCleaner($_POST['password']);
-        // $bio = $this->dataCleaner($_POST['bio']);
-
-        // $result = $this->model->inputUser($username, $fullname, $email, $password, $bio);
-        // if ($result > 0) {
-        //     header("location: " . $this->absUrl());
-        //     die();
-        // } else {
-        //     header("location: " . $this->absUrl() . "/auth/register");
-        //     die();
-        // }
-    }
 
     public function delete()
     {
@@ -75,17 +58,16 @@ class UsersMiddleware extends Controller
         // }
     }
 
-    public function update()
+    public function update(int $id, string $username, string  $fullname, string  $email, $bio)
     {
-        // $id = htmlspecialchars(str_replace("/db/api/delete/user/", "", $_SERVER['REQUEST_URI']));
-        // $result = $this->model->deleteUser($id);
-        // if ($result > 0) {
-        //     header("location: http://localhost/db/users");
-        //     die();
-        // } else {
-        //     header("refresh:3; url=http://localhost/db/users");
-        //     echo "DELETE USER FAILED";
-        //     die();
-        // }
+        $result = $this->model->updateUserById($id, $username, $fullname, $email, $bio);
+        if ($result > 0) {
+            header("location: " . $this->absUrl() . "/baas/users");
+            die();
+        } else {
+            header("refresh:3; url=" . $this->absUrl() . "/page/internalServerError");
+            echo "UPDATE USER FAILED";
+            die();
+        }
     }
 }

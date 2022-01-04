@@ -227,7 +227,7 @@
             ?>
                     <h1 class='font-semibold text-gray-700 text-xl'>Users</h1>
                     <div class='flex flex-col dark:text-gray-400 items-center text-center space-y-2'>
-                        <form class="grid grid-flow-row auto-rows-auto gap-2 outline-dashed p-2 rounded" action="<?= $data["baseUrl"] ?>/api/update/user" method="POST">
+                        <form class="grid grid-flow-row auto-rows-auto gap-2 outline-dashed p-2 rounded" action="<?= $data["baseUrl"] ?>/api/update/user/<?= $data["user"]["id"] ?>" method="POST">
                             <div class="relative rounded-md shadow-sm bg-gray-400">
                                 <input type="text" name="username" placeholder="Username" value="<?= $data["user"]["username"] ?>" class="shadow text-gray-800 focus:text-gray-800 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 py-3 pr-12 sm:text-sm border-gray-300 rounded-md" required>
                             </div>
@@ -236,9 +236,6 @@
                             </div>
                             <div class="relative rounded-md shadow-sm bg-gray-400">
                                 <input type="email" name="email" placeholder="Email" value="<?= $data["user"]["email"] ?>" class="shadow text-gray-800 focus:text-gray-800 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 py-3 pr-12 sm:text-sm border-gray-300 rounded-md" required>
-                            </div>
-                            <div class="relative rounded-md shadow-sm bg-gray-400">
-                                <input type="password" name="password" placeholder="Password" class="shadow text-gray-800 focus:text-gray-800 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 py-3 pr-12 sm:text-sm border-gray-300 rounded-md" required>
                             </div>
                             <div class="relative rounded-md shadow-sm bg-gray-400">
                                 <textarea name="bio" placeholder="Biografi User" cols="30" rows="3" class="snap-start shadow text-gray-800 focus:text-gray-800 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 py-3 pr-12 sm:text-sm border-gray-300 rounded-md" required>

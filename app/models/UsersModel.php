@@ -34,6 +34,25 @@ class UsersModel
         return $this->db->table($this->table)->select("*")->where(["id='" . $id . "'"])->first();
     }
 
+    public function updateUserById(int $id, String $username, String $fullname, String $email, $bio)
+    {
+        $this->db->query("UPDATE `" . $this->table . "` SET `username`=':username',`fullname`=':fullname',`email`=':email',`bio`=':bio' WHERE `id`=:id");
+        $this->db->bind('username', $username);
+        $this->db->bind('fullname', $fullname);
+        $this->db->bind('email', $email);
+        $this->db->bind('bio', $bio);
+        $this->db->bind('id', $id);
+        var_dump("id=" . $id, "username=" . $username, "fullname=" . $fullname, "email=" . $email, "bio=" . $bio);
+        try {
+            $this->db->execute();
+            return $this->db->rowCount();
+        } catch (PDOException $e) {
+            var_dump($e->getMessage());
+            die();
+            return 0;
+        }
+    }
+
     public function checkUsername($username)
     {
         $this->db->query('SELECT `username` FROM ' . $this->table . ' WHERE `username`=:username');
@@ -62,14 +81,6 @@ class UsersModel
     {
         var_dump($avatar_path);
         if (empty($avatar_path)) {
-            // $this->db->query('INSERT INTO `' . $this->table . '` (`username`, `fullname`, `email`, `password`, `bio`, `created_at`) 
-            // VALUES (:username,:fullname,:email,MD5(:password),:bio, CURRENT_TIMESTAMP)');
-            // $this->db->bind('username', $username);
-            // $this->db->bind('fullname', $fullname);
-            // $this->db->bind('email', $email);
-            // $this->db->bind('password', $password);
-            // $this->db->bind('bio', $bio);
-
             try {
                 $this->db->table($this->table)->insert([
                     "username"   => $username,
