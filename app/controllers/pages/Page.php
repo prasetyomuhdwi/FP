@@ -17,6 +17,70 @@ class Page extends Controller
 
         $dataComp['pageComp'] = new PageComp([], $this->absUrl());
 
+        $data['top3Tags'] = ["Tanaman Hias", "Tanaman Obat", "Tanaman Pangan"];
+        $data['blogLatest'] = [
+            0 => array(
+                "id" => 1,
+                "poster_path" => "https://dummyimage.com/720x400",
+                "tags_id" => "Tanaman Hias,Tanaman Obat,Tanaman Pangan",
+                "title" => "Cara Menanam Kunyit",
+                "countLike" => 100,
+                "created_at" => "12 Jan 2022",
+                "countBookmark" => 10,
+                "summary" => "Kunyit adalah tanaman obat alami yang sangat banyak kegunaannya bagi kehidupan kita mulai dari pewarna, obat, dan lainnya",
+            ),
+            1 => array(
+                "id" => 2,
+                "poster_path" => "https://dummyimage.com/720x400",
+                "tags_id" => "Tanaman Hias,Tanaman Obat,Tanaman Pangan",
+                "title" => "Cara Menanam Kunyit",
+                "countLike" => 100,
+                "created_at" => "12 Jan 2022",
+                "countBookmark" => 10,
+                "summary" => "Kunyit adalah tanaman obat alami yang sangat banyak kegunaannya bagi kehidupan kita mulai dari pewarna, obat, dan lainnya",
+            ),
+            2 => array(
+                "id" => 3,
+                "poster_path" => "https://dummyimage.com/720x400",
+                "tags_id" => "Tanaman Hias,Tanaman Obat,Tanaman Pangan",
+                "title" => "Cara Menanam Kunyit",
+                "countLike" => 100,
+                "created_at" => "12 Jan 2022",
+                "countBookmark" => 10,
+                "summary" => "Kunyit adalah tanaman obat alami yang sangat banyak kegunaannya bagi kehidupan kita mulai dari pewarna, obat, dan lainnya",
+            ),
+        ];
+        $data['blogPopular'] =
+            [
+                0 => array(
+                    "id" => 1,
+                    "poster_path" => "https://dummyimage.com/720x400",
+                    "tags_id" => "Tanaman Hias,Tanaman Obat,Tanaman Pangan",
+                    "title" => "Cara Menanam Kunyit",
+                    "countLike" => 100,
+                    "countBookmark" => 10,
+                    "summary" => "Kunyit adalah tanaman obat alami yang sangat banyak kegunaannya bagi kehidupan kita mulai dari pewarna, obat, dan lainnya",
+                ),
+                1 => array(
+                    "id" => 2,
+                    "poster_path" => "https://dummyimage.com/720x400",
+                    "tags_id" => "Tanaman Hias,Tanaman Obat,Tanaman Pangan",
+                    "title" => "Cara Menanam Kunyit",
+                    "countLike" => 100,
+                    "countBookmark" => 10,
+                    "summary" => "Kunyit adalah tanaman obat alami yang sangat banyak kegunaannya bagi kehidupan kita mulai dari pewarna, obat, dan lainnya",
+                ),
+                2 => array(
+                    "id" => 3,
+                    "poster_path" => "https://dummyimage.com/720x400",
+                    "tags_id" => "Tanaman Hias,Tanaman Obat,Tanaman Pangan",
+                    "title" => "Cara Menanam Kunyit",
+                    "countLike" => 100,
+                    "countBookmark" => 10,
+                    "summary" => "Kunyit adalah tanaman obat alami yang sangat banyak kegunaannya bagi kehidupan kita mulai dari pewarna, obat, dan lainnya",
+                ),
+            ];
+
         $this->view('templates/header', $dataComp);
         $this->view('page/index', $data);
         $this->view('templates/footer', $dataComp);

@@ -47,13 +47,6 @@ class SignUpIn
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' id='password' 
             placeholder='Masukkan kata sandi*' name='password' required>
         </div>
-        <div class='flex justify-between items-center mb-6'>
-            <div class='form-group form-check'>
-                <input type='checkbox' class='form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer' id='exampleCheck2'>
-                <label class='form-check-label inline-block text-gray-800' for='exampleCheck2'>Ingat saya</label>
-            </div>
-            <a href='#!' class='ml-5 text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out'>Lupa kata sandi?</a>
-        </div>
         <button type='submit' 
             class='
             w-full
@@ -80,7 +73,7 @@ class SignUpIn
     private function register()
     {
         return "
-    <form class='w-96' action='" . $this->baseUrl . "/auth/signup' method='POST'>
+    <form class='w-96' action='" . $this->baseUrl . "/auth/signup' method='post' enctype='multipart/form-data'>
         <div class='grid grid-cols-2 gap-4 m-auto mb-6'>
             <div id='progress-akun' class='border-t-4 border-emerald-400 pt-4'>
                 <p class='uppercase text-emerald-500 text-sm font-bold'>Akun</p>
@@ -256,10 +249,6 @@ class SignUpIn
     </form>";
     }
 
-    private function forgetPass()
-    {
-        return "";
-    }
 
     public function __construct($baseUrl)
     {

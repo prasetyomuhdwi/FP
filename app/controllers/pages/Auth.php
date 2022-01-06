@@ -93,12 +93,23 @@ class Auth extends Controller
         $fullname = filter_var($_POST['fullname'], FILTER_SANITIZE_STRING);
         $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
 
+
         $email = $this->dataCleaner($email);
         $bio = $this->dataCleaner($bio);
         $username = $this->dataCleaner($username);
         $fullname = $this->dataCleaner($fullname);
         $password = $this->dataCleaner($password);
 
-        $middleware->register($username, $fullname, $email, $password, $bio);
+        if (!empty($_FILES["avatar_path"])) {
+            $libUpFile = new UploadFile(true, "avatar_path");
+            $avatar_path = $libUpFile->user($_FILES["avatar_path"], $username);
+            if (!is_array($avatar_path)) {
+                $middleware->register($username, $fullname, $email, $password, $bio, $avatar_path);
+            } else {
+                $_SESSION["registerErr"] = $avatar_path;
+            }
+        } else {
+            $middleware->register($username, $fullname, $email, $password, $bio);
+        }
     }
 }

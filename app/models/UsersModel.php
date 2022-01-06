@@ -91,22 +91,22 @@ class UsersModel
                     "created_at" => "CURRENT_TIMESTAMP"
                 ]);
 
-                // $this->db->execute();
                 return $this->db->rowCount();
             } catch (PDOException $e) {
                 return 0;
             }
         } else {
-            $this->db->query('INSERT INTO `' . $this->table . '` (`username`, `fullname`, `email`, `password`, `bio`, `created_at`, `avatar_path`) 
-            VALUES (:username,:fullname,:email,MD5(:password),:bio, CURRENT_TIMESTAMP,:avatar_path)');
-            $this->db->bind('username', $username);
-            $this->db->bind('fullname', $fullname);
-            $this->db->bind('email', $email);
-            $this->db->bind('password', $password);
-            $this->db->bind('bio', $bio);
-            $this->db->bind('avatar_path', $avatar_path);
             try {
-                $this->db->execute();
+                $this->db->table($this->table)->insert([
+                    "username"   => $username,
+                    "avatar_path"   => $avatar_path,
+                    "fullname"   => $fullname,
+                    "email"      => $email,
+                    "password"   => $password,
+                    "bio"        => $bio,
+                    "created_at" => "CURRENT_TIMESTAMP"
+                ]);
+
                 return $this->db->rowCount();
             } catch (PDOException $e) {
                 return 0;

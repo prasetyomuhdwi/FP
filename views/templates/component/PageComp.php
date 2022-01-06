@@ -63,7 +63,7 @@ class PageComp
                 <div id='btn_account' class='inline-flex items-center rounded-full bg-white dark:bg-transparent border hover:border-4 border-gray-200 hover:border-gray-500 p-1'>
                     <img
                       class='w-8 h-8 object-cover rounded-full'
-                      src='" . ((is_null($_SESSION["user"]['avatar_path'])) ?  $this->baseUrl . "/assets/image/default-user.jpeg'" : $_SESSION["user"]['avatar_path']) . "
+                      src='" . ((is_null($_SESSION["user"]['avatar_path'])) ?  $this->baseUrl . "/assets/image/default-user.jpeg'" : $this->baseUrl . $_SESSION["user"]['avatar_path']) . "'" . "
                       alt='Avatar'
                     />
                     <span class='px-1 text-sm dark:text-gray-200 dark:hover:text-gray-100 focus:text-gray-50 '>" . $_SESSION["user"]['username'] . "</span>

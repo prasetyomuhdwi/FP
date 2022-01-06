@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS `db_pwl`;
-CREATE DATABASE `db_pwl` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+DROP DATABASE IF EXISTS `pwl_db`;
+CREATE DATABASE `pwl_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
@@ -44,6 +44,7 @@ CREATE TABLE `blogs` (
   `tags_id` varchar(255) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
   `poster_path` text DEFAULT NULL,
   `content` text DEFAULT NULL,
   `summary` varchar(255) NOT NULL,
