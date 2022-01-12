@@ -30,27 +30,27 @@ class PageComp
                         </div>
                         <!-- Primary Navbar items -->
                         <div class='hidden w-full md:flex justify-center items-center space-x-1'>
-                            <a href='" . $this->baseUrl . "/' class='py-4 px-2 " . (($active_page[0] == "") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Beranda</a>
+                            <a href='" . $this->baseUrl . "/' class='py-4 px-2 " . ((isset($active_page[0]) && $active_page[0] == "") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Beranda</a>
                             <div class='relative'>
-                                <button id='btn-blog' class='py-4 px-2 inline-flex items-center" . (($active_page[0] == "blog") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 dark:hover:text-green-600 transition duration-300") . "'>
+                                <button id='btn-blog' class='py-4 px-2 inline-flex items-center" . ((isset($active_page[0]) && $active_page[0] == "blog") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 dark:hover:text-green-600 transition duration-300") . "'>
                                 Blog  
                                     <svg class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
                                         <path fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' />
                                     </svg>
                                 </button>
                                 <div id='blog-modal' class='hidden absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20'>
-                                    <a href='" . $this->baseUrl . "/blogs' class='block px-4 py-2 text-sm capitalize " . (($active_page[1] == "all") ? " bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
+                                    <a href='" . $this->baseUrl . "/blogs' class='block px-4 py-2 text-sm capitalize " . ((isset($active_page[1]) && $active_page[1] == "all") ? " bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
                                         Semua Blog
                                     </a>
-                                    <a href='" . $this->baseUrl . "/blogs/latest' class='block px-4 py-2 text-sm capitalize " . (($active_page[1] == "latest") ? "bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
+                                    <a href='" . $this->baseUrl . "/blogs/latest' class='block px-4 py-2 text-sm capitalize " . ((isset($active_page[1]) && $active_page[1] == "latest") ? "bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
                                         Blog Terbaru
                                     </a>
-                                    <a href='" . $this->baseUrl . "/blogs/tags' class='block px-4 py-2 text-sm capitalize " . (($active_page[1] == "tags") ? "bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
+                                    <a href='" . $this->baseUrl . "/blogs/tags' class='block px-4 py-2 text-sm capitalize " . ((isset($active_page[1]) && $active_page[1] == "tags") ? "bg-emerald-500 text-white hover:bg-emerald-500 hover:text-white" : "text-gray-700 bg-white hover:bg-emerald-500 hover:text-white ") . "'>
                                         Tag Blog
                                     </a>
                                 </div>
                             </div>
-                            <a href='" . $this->baseUrl . "/page/about' class='py-4 px-2 " . (($active_page[0] == "about") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Tentang</a>
+                            <a href='" . $this->baseUrl . "/page/about' class='py-4 px-2 " . ((isset($active_page[0]) && $active_page[0] == "about") ? " text-green-500 border-b-4 border-green-500 font-semibold" : " text-gray-500 dark:text-gray-50 hover:text-green-500 transition duration-300") . "'>Tentang</a>
                         </div>
                     </div>
                     <!-- Secondary Navbar items -->
@@ -109,9 +109,9 @@ class PageComp
             <!-- mobile menu -->
             <div class='hidden mobile-menu'>
                 <ul class='dark:bg-gray-600'>
-                    <li class='active'><a href='" . $this->baseUrl . "/' class='block text-sm px-2 py-4 " . (($active_page[0] == "home") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Beranda</a></li>
-                    <li><a href='" . $this->baseUrl . "/blog?q=all' class='block text-sm px-2 py-4 " . (($active_page[0] == "blog") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Blog</a></li>
-                    <li><a href='" . $this->baseUrl . "/about' class='block text-sm px-2 py-4 " . (($active_page[0] == "about") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Tentang</a></li>
+                    <li class='active'><a href='" . $this->baseUrl . "/' class='block text-sm px-2 py-4 " . ((isset($active_page[0]) && $active_page[0] == "home") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Beranda</a></li>
+                    <li><a href='" . $this->baseUrl . "/blog?q=all' class='block text-sm px-2 py-4 " . ((isset($active_page[0]) && $active_page[0] == "blog") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Blog</a></li>
+                    <li><a href='" . $this->baseUrl . "/about' class='block text-sm px-2 py-4 " . ((isset($active_page[0]) && $active_page[0] == "about") ? " dark:text-white bg-green-500 font-semibold" : "  dark:text-white hover:bg-green-600 transition duration-300") . "'>Tentang</a></li>
                 </ul>
             </div>
 

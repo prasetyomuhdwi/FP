@@ -4,25 +4,55 @@
 
         <div class="flex justify-center items.center p-5 py-10 min-h-screen">
 
-            <div class="w-3/4 bg-gray-100 dark:bg-gray-700 flex rounded-lg shadow-lg dark:text-white">
+            <form action="<?= ($data["blog"]) ? $data["baseUrl"] . "/api/update/blog/" . $data["blog"]["id"] : $data["baseUrl"] . "/api/insert/blog" ?>" method="POST" class="w-3/4 bg-gray-100 dark:bg-gray-700 flex rounded-lg shadow-lg dark:text-white" enctype="multipart/form-data">
                 <div class="w-1/3 p-3">
                     <div class="flex flex-col gap-2 p-2">
                         <label for="toggle" class="">Publis Blog?</label>
                         <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                            <input required type="checkbox" name="status" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-white border-4 appearance-none cursor-pointer" />
+                            <input type="checkbox" name="status" value="<?= ($data["blog"]["status"] == "publish") ? "on" : "off" ?>" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-white border-4 appearance-none cursor-pointer" />
                             <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"></label>
                         </div>
                     </div>
                     <div class="flex flex-col gap-2 p-2">
-                        <label for="title" class="ml-2">Judul</label>
-                        <input required type="text" id="title" name="title" placeholder="Judul" class="dark:bg-gray-700 dark:focus:text-white dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+                        <label for="poster_path" class="ml-2">Gambar*</label>
+                        <input required type="file" id="poster_path" name="poster_path" class="dark:bg-gray-700 dark:focus:text-white dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
                     </div>
                     <div class="flex flex-col gap-2 p-2">
-                        <label for="tags_id" class="ml-2">Kategori Blog</label>
-                        <input required type="text" id="tags_id" name="tags_id[]" placeholder="Kategori Blog" class="dark:bg-gray-700 dark:focus:text-white dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+                        <label for="title" class="ml-2">Judul*</label>
+                        <input required type="text" value="<?= ($data["blog"]["title"]) ? $data["blog"]["title"] : "" ?>" id="title" name="title" placeholder="Judul" class="dark:bg-gray-700 dark:focus:text-white dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
                     </div>
                     <div class="flex flex-col gap-2 p-2">
-                        <button class="w-full px-4 p-2 mt-2 relative rounded-md shadow-lg bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:bg-gray-900 text-gray-400 hover:text-gray-200 hover:bg-gray-800 focus:text-white focus:bg-gray-900">
+                        <label for="tags_id" class="ml-2">Kategori Blog*</label>
+                        <select class="
+                                h-full 
+                                form-multiselect 
+                                appearance-none
+                                block
+                                w-full
+                                p-3
+                                text-base
+                                font-normal
+                                text-gray-700
+                                bg-white bg-clip-padding bg-no-repeat
+                                border border-solid border-gray-300
+                                rounded-md
+                                transition
+                                ease-in-out
+                                m-0
+                                focus:text-gray-700 
+                                focus:bg-white 
+                                focus:border-blue-600 
+                                focus:outline-none" name="tags_id[]" id="tags_id" data-bs-toggle="tooltip" data-bs-placement="right" title="**MultiSelect** Tahan ctrl atau shift + klik" aria-label="Select Tags" multiple="multiple" required>
+
+                            <?php
+                            foreach ($data["getListTags"] as $key => $value) {
+                                echo "<option value='" . $value['id'] . "'>" . $value['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2 p-2">
+                        <button type="submit" class="w-full px-4 p-2 mt-2 relative rounded-md shadow-lg bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:bg-gray-900 text-gray-400 hover:text-gray-200 hover:bg-gray-800 focus:text-white focus:bg-gray-900">
                             Simpan
                         </button>
                     </div>
@@ -35,15 +65,15 @@
                         Jika Publis belum dicentang maka blog belum dapat diakses publik
                     </div>
                     <div class="flex flex-col gap-2 p-2">
-                        <label for="summary" class="ml-2">Ringkasan Tanaman</label>
-                        <textarea required name="summary" id="summary" cols="10" rows="3" placeholder="Ringkasan tanaman" class="w-full rounded-lg dark:bg-gray-700 dark:focus:text-white dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none"></textarea>
+                        <label for="summary" class="ml-2">Ringkasan Tanaman*</label>
+                        <textarea name="summary" id="summary" cols="10" rows="3" placeholder="Ringkasan tanaman" class="w-full rounded-lg dark:bg-gray-700 dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none"><?= ($data["blog"]["summary"]) ? $data["blog"]["summary"] : "" ?></textarea>
                     </div>
                     <div class="flex flex-col gap-2 p-2">
-                        <label for="content" class="ml-2">Isi Blog</label>
-                        <textarea required name="content" id="content" cols="20" rows="15" placeholder="Isi Blog" class="w-full rounded-lg dark:bg-gray-700 dark:focus:text-white dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none"></textarea>
+                        <label for="content" class="ml-2">Isi Blog*</label>
+                        <textarea name="content" id="content" cols="20" rows="15" placeholder="Isi Blog" class="w-full rounded-lg dark:bg-gray-700 dark:text-white block text-sm py-3 px-4 rounded-lg w-full border outline-none"><?= ($data["blog"]["content"]) ? $data["blog"]["content"] : "" ?></textarea>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
 
     </div>

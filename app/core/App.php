@@ -28,6 +28,7 @@ class App
                 require_once './app/controllers/pages/Page.php';
                 $this->controller = new Page;
             }
+
             // Parameter
             if (!empty($url)) {
                 $this->params = array_values($url);

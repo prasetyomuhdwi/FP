@@ -50,4 +50,17 @@ class TagsModel
         $this->db->query('SELECT COUNT(`id`) AS `count` FROM ' . $this->table);
         return $this->db->single();
     }
+
+    public function getTagsByName($name)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE name=:name');
+        $this->db->bind('name', $name);
+        return $this->db->resultSet();
+    }
+
+    public function getAllLatestTags()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY created_at DESC LIMIT 3');
+        return $this->db->resultSet();
+    }
 }

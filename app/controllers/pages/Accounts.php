@@ -3,16 +3,41 @@ session_start();
 
 class Accounts extends Controller
 {
+    public function __construct()
+    {
+        $authMiddleware = new AuthMiddleware;
+        if (!$authMiddleware->isLogin()) {
+            header("location: " . $this->absUrl() . "/auth/register");
+        }
+    }
     // untuk masuk kesini 
     // http://localhost/.../accounts/profile/
-    public function profile()
+    public function profile($username = NULL)
     {
         $dataComp['baseUrl'] = $data['baseUrl'] = $this->absUrl();
-        $dataComp['script'] = "<script src='" . $this->absUrl() . "/assets/js/main.js'></script>";
+        $dataComp['script'] = "
+        <script src='" . $this->absUrl() . "/assets/js/main.js'></script>
+        <script src='" . $this->absUrl() . "/assets/js/profile.js'></script>
+        ";
         $dataComp['title'] = "Profile";
         $dataComp['useNav'] = true;
 
         $dataComp['pageComp'] = new PageComp(['profile'], $this->absUrl());
+
+        $mBlog = new BlogsMiddleware;
+        $mUser = new UsersMiddleware;
+
+        if (empty($username)) {
+            $data["user"] = $_SESSION["user"];
+            $data["blogs"] = $mBlog->getAllBlogsByUserId();
+        } else {
+            if (!$mUser->getUserByUsername($username)) {
+                $page = new Page;
+                $page->notFound();
+            }
+            $data["user"] = $mUser->getUserByUsername($username);
+            $data["blogs"] = $mBlog->getAllBlogsByUserId($data["user"]["id"]);
+        }
 
         $this->view('templates/header', $dataComp);
         $this->view('accounts/profile', $data);
@@ -45,6 +70,8 @@ class Accounts extends Controller
         $dataComp['useNav'] = true;
 
         $dataComp['pageComp'] = new PageComp(['favorit'], $this->absUrl());
+
+        $data["user"] = $_SESSION["user"];
 
         $this->view('templates/header', $dataComp);
         $this->view('accounts/edit', $data);

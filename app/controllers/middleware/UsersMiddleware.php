@@ -1,6 +1,7 @@
 <?php
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 class UsersMiddleware extends Controller
 {
     private $model;
@@ -23,6 +24,12 @@ class UsersMiddleware extends Controller
     public function getUserById(int $id)
     {
         return $this->model->getUserById($id);
+    }
+
+    public function getUserByUsername($username)
+    {
+        $username = $this->dataCleaner($username);
+        return $this->model->getUserByUsername($username);
     }
 
     public function getListAllUsers()

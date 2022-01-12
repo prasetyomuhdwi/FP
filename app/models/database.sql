@@ -47,7 +47,7 @@ CREATE TABLE `blogs` (
   `status` varchar(255) NOT NULL,
   `poster_path` text DEFAULT NULL,
   `content` text DEFAULT NULL,
-  `summary` varchar(255) NOT NULL,
+  `summary` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `deleted_at` timestamp DEFAULT NULL,
@@ -101,7 +101,11 @@ CREATE TABLE `likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`role`,`created_at`) VALUES ('admin','admin fp pwl','admin@mail.com',MD5('adminFP123'),'saya adalah admin yang bertugas untuk mengawasi dan mengatur website','baas',CURRENT_TIMESTAMP);
-INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`created_at`) VALUES ('user','user fp pwl','user@mail.com',MD5('userFP123'),'saya adalah user website',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`avatar_path`,`created_at`) VALUES ('yudha_putra','Yudha Pratama Putra','yudha.putra@students.amikom.ac.id',MD5('Yudha07fcb'),'saya adalah mahasiswa informatika di Universitas Amikom Yogyakarta','/assets/image/users/yudha_putra.jpg',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`avatar_path`,`created_at`) VALUES ('asdprks','Muhammad Asadulloh Al Mubarok','mh.almubarok98@gmail.com',MD5('Hiyahiya098'),'Saya adalah mahasiswa Universitas Amikom Yogyakarta.','/assets/image/users/asdprks.jpg',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`avatar_path`,`created_at`) VALUES ('andreadianuwar','Andre Adi Anuwar','andreadianuwar@gmail.com',MD5('4ndr321J'),'Saya adalah mahasiswa Universitas Amikom Yogyakarta',NULL,CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`avatar_path`,`role`,`created_at`) VALUES ('needkopi','Chandra Agung Rizki','needkopi@gmail.com',MD5('Chandra123'),'saya adalah mahasiswa informatika di Universitas Amikom Yogyakarta','/assets/image/users/needkopi.jpg','baas',CURRENT_TIMESTAMP);
+INSERT INTO `users` (`username`,`fullname`,`email`,`password`,`bio`,`avatar_path`,`role`,`created_at`) VALUES ('prasetyomuhdwi','Muhammad Dwi Prasetyo','prasetyomuhdwi@gmail.com',MD5('Prasetyo123'),'saya adalah mahasiswa informatika di Universitas Amikom Yogyakarta','/assets/image/users/prasetyomuhdwi.jpg','baas',CURRENT_TIMESTAMP);
 
 INSERT INTO `tags` (`name`,`created_at`) VALUES ('Tanaman Hias',CURRENT_TIMESTAMP);
 INSERT INTO `tags` (`name`,`created_at`) VALUES ('Tanaman Obat',CURRENT_TIMESTAMP);

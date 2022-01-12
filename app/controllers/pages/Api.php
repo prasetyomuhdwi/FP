@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 class Api extends Controller
 {
@@ -59,6 +61,10 @@ class Api extends Controller
         switch ($table) {
             case 'blog':
                 $mBlog = new BlogsMiddleware;
+                $mBlog->delete((int)$id);
+                $page = new Accounts;
+                $page->profile();
+                die();
                 break;
             case 'tag':
                 $mTag = new TagsMiddleware;
@@ -88,6 +94,39 @@ class Api extends Controller
         switch ($table) {
             case 'blog':
                 $mBlog = new BlogsMiddleware;
+                $tags_id = implode(",", $_POST['tags_id']) . ",";
+
+                if (empty($_POST['user_id'])) {
+                    $user_id = $_SESSION['user']["id"];
+                    $username = $_SESSION['user']["username"];
+                } else {
+                    $user_id = $_POST['user_id'];
+                }
+
+                $summary = $this->dataCleaner($_POST['summary']);
+                $title = $this->dataCleaner($_POST['title']);
+                $content = $this->dataCleaner($_POST['content']);
+
+                if (!empty($_POST["status"])) {
+                    $status = "publish";
+                } else {
+                    $status = "draf";
+                }
+
+                if (!empty($_FILES["poster_path"])) {
+                    $libUpFile = new UploadFile(false, "poster_path");
+                    $poster_path = $libUpFile->blog($_FILES["poster_path"], $username, $title);
+
+                    if (!is_array($poster_path)) {
+                        $mBlog->update($id, $tags_id, $title, $content, $summary, $status, $poster_path);
+                    } else {
+                        $_SESSION["registerErr"] = $poster_path;
+                        header("location: " . $this->absUrl() . "/blogs/create/");
+                        die();
+                    }
+                } else {
+                    $mBlog->update($id, $tags_id, $title, $content, $summary, $status, null);
+                }
                 break;
             case 'tag':
                 $mTag = new TagsMiddleware;
@@ -123,12 +162,45 @@ class Api extends Controller
     }
     // untuk masuk kesini 
     // http://localhost/.../api/insert/$table/$id
-    public function insert($table)
+    public function insert($table, $param = null)
     {
         switch ($table) {
             case 'blog':
                 $mBlog = new BlogsMiddleware;
-                $mBlog->insert();
+                $tags_id = implode(",", $_POST['tags_id']) . ",";
+
+                if (empty($_POST['user_id'])) {
+                    $user_id = $_SESSION['user']["id"];
+                    $username = $_SESSION['user']["username"];
+                } else {
+                    $user_id = $_POST['user_id'];
+                }
+
+                $summary = $this->dataCleaner($_POST['summary']);
+                $title = $this->dataCleaner($_POST['title']);
+                $content = $this->dataCleaner($_POST['content']);
+
+                if (!empty($_POST["status"])) {
+                    $status = "publish";
+                } else {
+                    $status = "draf";
+                }
+
+                if (!empty($_FILES["poster_path"])) {
+                    $libUpFile = new UploadFile(false, "poster_path");
+                    $poster_path = $libUpFile->blog($_FILES["poster_path"], $username, $title);
+
+                    if (!is_array($poster_path)) {
+                        $mBlog->insert($tags_id, $user_id, $title, $summary, $content, $poster_path, $status);
+                    } else {
+                        $_SESSION["registerErr"] = $poster_path;
+                        header("location: " . $this->absUrl() . "/blogs/create/");
+                        die();
+                    }
+                } else {
+                    $mBlog->insert($tags_id, $user_id, $title, $summary, $content, NULL, $status);
+                }
+
                 break;
             case 'tag':
                 $mTag = new TagsMiddleware;
@@ -138,6 +210,23 @@ class Api extends Controller
                 break;
             case 'comment':
                 $mComment = new CommentsMiddleware;
+                $comment = $this->dataCleaner($_POST['comment']);
+
+                $param = str_replace("b=", "", $param);
+                $param = str_replace("p=", "", $param);
+                $param = explode(",", $param);
+
+                if (count($param) > 1) {
+                    $blog_id = $param[0];
+                    $parent_id = $param[1];
+                } else {
+                    $blog_id = $param[0];
+                    $parent_id = 0;
+                }
+
+                $user_id = $_SESSION["user"]["id"];
+
+                $mComment->insert($blog_id, $user_id, $comment, $parent_id);
                 break;
             case 'like':
                 $mLike = new LikesMiddleware;

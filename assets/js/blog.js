@@ -32,7 +32,7 @@ if (progress) {
 // Comment Reply
 const comment_parent = document.querySelectorAll(".btn-toggle-comment");
 
-function createInput(id, parent) {
+function createInput(param, parent) {
   {
     /* <div class="hidden flex w-full rounded-lg bg-gray-300 dark:bg-gray-700 items-center justify-center shadow-lg mt-2 mb-4">
   <form class="w-full px-4 pt-2">
@@ -55,12 +55,12 @@ function createInput(id, parent) {
   let wrapper = document.createElement("div");
   wrapper.className =
     "reply" +
-    id +
+    param[0] +
     " flex w-full rounded-lg bg-gray-300 dark:bg-gray-700 items-center justify-center shadow-lg mt-2 mb-4";
 
   let form = document.createElement("form");
   form.className = "w-full px-4 pt-2";
-  form.action = "#" + id;
+  form.action = param[1];
   form.method = "POST";
 
   let flex_wrap = document.createElement("div");
@@ -114,10 +114,10 @@ function createInput(id, parent) {
   return wrapper;
 }
 if (comment_parent.length != 0) {
-  function reply(id, obj) {
-    let div = document.querySelector(".reply" + id);
+  function reply(param, obj) {
+    let div = document.querySelector(".reply" + param[0]);
     if (!div) {
-      obj.parentNode.insertBefore(createInput(id, obj), obj.nextSibling);
+      obj.parentNode.insertBefore(createInput(param, obj), obj.nextSibling);
     }
   }
 

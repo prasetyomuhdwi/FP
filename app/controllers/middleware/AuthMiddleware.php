@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 class AuthMiddleware extends Controller
 {
@@ -60,6 +62,7 @@ class AuthMiddleware extends Controller
                     $user = $model->getUserByEmailAndPassword($email, $password);
                     if ($user) {
                         $_SESSION["authenticated"] = 'true';
+                        $user["bio"] = trim($user["bio"]);
                         $_SESSION["user"] = $user;
                         $_SESSION["loginErr"] = NULL;
                         $this->mUser = $user;

@@ -16,6 +16,10 @@ spl_autoload_register(function ($class_name) {
         require_once __DIR__ . '/controllers/middleware/' . $class_name . '.php';
     }
 
+    if (file_exists(__DIR__ . '/controllers/pages/' . $class_name . '.php')) {
+        require_once __DIR__ . '/controllers/pages/' . $class_name . '.php';
+    }
+
     if (file_exists(__DIR__ . '/../views/templates/component/' . $class_name . '.php')) {
         require_once __DIR__ . '/../views/templates/component/' . $class_name . '.php';
     }

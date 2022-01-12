@@ -29,6 +29,13 @@ class UsersModel
         return $this->db->resultSet();
     }
 
+    public function getUserByUsername(String $username)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . " WHERE username=:username");
+        $this->db->bind("username", $username);
+        return $this->db->single();
+    }
+
     public function getUserById($id)
     {
         return $this->db->table($this->table)->select("*")->where(["id='" . $id . "'"])->first();
